@@ -5,6 +5,7 @@
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace List {
+
 	TEST_CLASS(Construction)
 	{
 	public:
@@ -30,7 +31,9 @@ namespace List {
 			Tracer tracerOut("Outside Tracer");
 			{
 				ds::List<Tracer> list;
-				list.Add(Tracer("Inside Added Tracer"));
+				list.Add(Tracer("Inside Tracer 1"));
+				list.Add(Tracer("Inside Tracer 2"));
+				list.Add(Tracer("Inside Tracer 3"));
 				list.Add(tracerOut);
 				list[0] = Tracer("Indexed Tracer");
 			}
@@ -40,23 +43,6 @@ namespace List {
 	TEST_CLASS(Add)
 	{
 	public:
-
-		struct Vector3 {
-			Vector3()
-				: x(0), y(0), z(0) {}
-
-			Vector3(float x, float y, float z)
-				: x(x), y(y), z(z) {}
-
-			Vector3& operator=(const Vector3& other) {
-				x = other.x;
-				y = other.y;
-				z = other.z;
-				return *this;
-			}
-
-			float x, y, z;
-		};
 
 		TEST_METHOD(Add5Elements)
 		{
@@ -78,7 +64,7 @@ namespace List {
 		{
 			using namespace std::string_literals;
 
-			ds::List<std::string> list(100);
+			ds::List<std::string> list;
 			list.Add("Bach"s);
 			list.Add("Chopin"s);
 			list.Add("Wagner"s);
@@ -106,5 +92,22 @@ namespace List {
 
 			Assert::AreEqual(33, sum);
 		}
+
+		
+		TEST_METHOD(SettingValues)
+		{
+			using namespace std::string_literals;
+
+			ds::List<std::string> list;
+			list.Add("Bach"s);
+			list.Add("Chopin"s);
+			list.Add("Wagner"s);
+			Assert::AreEqual("Bach"s, list[0]);
+			Assert::AreEqual("Chopin"s, list[1]);
+			Assert::AreEqual("Wagner"s, list[2]);
+			list[1] = "Vivaldi"s;
+			Assert::AreEqual("Vivaldi"s, list[1]);
+		}
+
 	};
 }
