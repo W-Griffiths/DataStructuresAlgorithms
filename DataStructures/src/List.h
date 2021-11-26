@@ -1,4 +1,5 @@
 #pragma once
+#include <new>
 
 namespace ds {
 
@@ -17,7 +18,7 @@ namespace ds {
 		}
 
 		~List() {
-			delete[] array;
+			DeleteArray();
 		}
 
 		const size_t Size() const { return size; }
@@ -27,7 +28,7 @@ namespace ds {
 				IncreaseCapacity();
 			}
 
-			array[size++] = obj;
+			new (&array[size++]) T(obj);
 		}
 
 		void Add(T&& obj) {
@@ -35,7 +36,7 @@ namespace ds {
 				IncreaseCapacity();
 			}
 
-			array[size++] = std::move(obj);
+			new (&array[size++]) T(std::move(obj));
 		}
 
 		T& operator[](size_t index) {
@@ -66,14 +67,27 @@ namespace ds {
 			T* newArray = AllocateArray(capacity);
 			for (size_t i = 0; i < size; i++)
 			{
-				newArray[i] = std::move(array[i]);
+				//newArray[i] = std::move(array[i]);
+				new (&newArray[i]) T(std::move(array[i]));
 			}
-			delete[] array;
+			DeleteArray();
 			array = newArray;
 		}
 
-		inline T* AllocateArray(size_t length) {
-			return new T[length];
+		T* AllocateArray(size_t length) {
+			return static_cast<T*>(::operator new[] (length * sizeof(T)));
+		}
+
+		void DeleteArray() {
+			// Call destructors in reverse
+			size_t i = size;
+			while (true)
+			{
+				if (i == 0) break;
+				i--;
+				array[i].~T();
+			}
+			::operator delete[] (array);
 		}
 
 	};
