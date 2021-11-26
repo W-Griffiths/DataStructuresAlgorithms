@@ -107,4 +107,45 @@ namespace List {
 			Assert::AreEqual(33, sum);
 		}
 	};
+
+	TEST_CLASS(Emplace)
+	{
+	public:
+
+		TEST_METHOD(EmplaceFloats)
+		{
+			ds::List<float> list;
+			list.Emplace(4.0f);
+			list.Emplace(5.0f);
+			list.Emplace(6.0f);
+
+			Assert::AreEqual(3, static_cast<int>(list.Size()));
+			Assert::AreEqual(4.0f, list[0]);
+		}
+
+		TEST_METHOD(EmplaceStrings)
+		{
+			using namespace std::string_literals;
+			
+			ds::List<std::string> list;
+			list.Emplace("Hello");
+			list.Emplace("C++"s);
+			list.Emplace("World");
+
+			Assert::AreEqual(3, static_cast<int>(list.Size()));
+			Assert::AreEqual("C++"s, list[1]);
+			Assert::AreEqual("World"s, list[2]);
+		}
+
+		TEST_METHOD(EmplaceTracers)
+		{
+			ds::List<Tracer> list;
+			list.Emplace("Emplaced 1");
+			list.Emplace("Emplaced 2");
+			
+
+			Assert::AreEqual(2, static_cast<int>(list.Size()));
+			Assert::AreEqual(std::string("Emplaced 1"), list[0].name);
+		}
+	};
 }

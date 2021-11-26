@@ -46,6 +46,15 @@ namespace ds {
 			return array[index];
 		}
 
+		template<typename... Args>
+		void Emplace(Args&&... args) {
+			if (size == capacity) {
+				IncreaseCapacity();
+			}
+
+			new (&array[size++]) T(std::forward<Args>(args)...);
+		}
+
 	private:
 		T* array;
 		size_t capacity;
