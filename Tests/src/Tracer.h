@@ -53,7 +53,6 @@ public:
 
 	Tracer& operator= (Tracer&& other) {
 		name = other.name;
-		ID = nextID++;
 
 		other.name += " (Moved From)";
 
