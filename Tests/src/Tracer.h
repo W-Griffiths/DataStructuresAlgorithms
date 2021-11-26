@@ -11,13 +11,13 @@ public:
 	Tracer() : Tracer("No Name") {}
 	Tracer(std::string name) : name(name), ID(nextID++) {
 		std::ostringstream message;
-		message << name << " constructed [" << ID << "]";
+		message << "[+]  " << name << " constructed [" << ID << "]";
 		Test::Logger::WriteMessage(message.str().c_str());
 	}
 
 	~Tracer() {
 		std::ostringstream message;
-		message << name << " destructed [" << ID << "]";
+		message << "[-]  " << name << " destructed [" << ID << "]";
 		Test::Logger::WriteMessage(message.str().c_str());
 	}
 
@@ -26,16 +26,15 @@ public:
 		ID = nextID++;
 
 		std::ostringstream message;
-		message << name << " copy constructed [" << other.ID << "] --> [" << ID << "]";
+		message << "[+=] " << name << " copy constructed [" << other.ID << "] --> [" << ID << "]";
 		Test::Logger::WriteMessage(message.str().c_str());
 	}
 
 	Tracer& operator= (const Tracer& other) {
 		name = other.name;
-		ID = nextID++;
 
 		std::ostringstream message;
-		message << name << " copy assigned [" << other.ID << "] --> [" << ID << "]";
+		message << "[=]  " << name << " copy assigned [" << other.ID << "] --> [" << ID << "]";
 		Test::Logger::WriteMessage(message.str().c_str());
 
 		return *this;
@@ -48,7 +47,7 @@ public:
 		other.name += " (Moved From)";
 
 		std::ostringstream message;
-		message << name << " move constructed [" << other.ID << "] --> [" << ID << "]";
+		message << "[+>] " << name << " move constructed [" << other.ID << "] --> [" << ID << "]";
 		Test::Logger::WriteMessage(message.str().c_str());
 	}
 
@@ -59,16 +58,18 @@ public:
 		other.name += " (Moved From)";
 
 		std::ostringstream message;
-		message << name << " move assigned [" << other.ID << "] --> [" << ID << "]";
+		message << "[>]  " << name << " move assigned [" << other.ID << "] --> [" << ID << "]";
 		Test::Logger::WriteMessage(message.str().c_str());
 
 		return *this;
 	}
 
-private:
+public:
 	std::string name;
-	static unsigned int nextID;
 	unsigned int ID;
+
+private:
+	static unsigned int nextID;
 };
 
 unsigned int Tracer::nextID = 0;
