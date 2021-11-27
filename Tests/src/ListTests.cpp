@@ -110,4 +110,83 @@ namespace List {
 		}
 
 	};
+
+	TEST_CLASS(Iterators)
+	{
+	public:
+
+		TEST_METHOD(RangeForLoop)
+		{
+			ds::List<int> nums;
+			nums.Add(5);
+			nums.Add(8);
+			nums.Add(7);
+			nums.Add(1);
+			nums.Add(2);
+			
+			int sum = 0;
+			for(auto& num : nums)
+			{
+				sum += num;
+			}
+
+			Assert::AreEqual(23, sum);
+		}
+
+		TEST_METHOD(ForLoop)
+		{
+			ds::List<int> nums;
+			nums.Add(5);
+			nums.Add(8);
+			nums.Add(7);
+			nums.Add(1);
+			nums.Add(2);
+
+			int sum = 0;
+			for (auto& it = nums.begin(); it != nums.end(); it++)
+			{
+				sum += *it;
+			}
+
+			Assert::AreEqual(23, sum);
+		}
+		
+		TEST_METHOD(PartialIterLoop)
+		{
+			ds::List<int> nums;
+			nums.Add(5);
+			nums.Add(8);
+			nums.Add(7);
+			nums.Add(1);
+			nums.Add(2);
+
+			int sum = 0;
+			auto it = nums.begin() + 1;
+			auto end = it + 3;
+			while (it != end) {
+				sum += *it;
+				it++;
+			}
+
+			Assert::AreEqual(16, sum);
+		}
+
+		TEST_METHOD(ReverseForLoop)
+		{
+			ds::List<int> nums;
+			nums.Add(5);
+			nums.Add(8);
+			nums.Add(7);
+			nums.Add(1);
+			nums.Add(2);
+
+			int sum = 0;
+			for (auto& it = nums.end()-1; it != nums.begin() - 1; it--)
+			{
+				sum += *it;
+			}
+
+			Assert::AreEqual(23, sum);
+		}
+	};
 }
