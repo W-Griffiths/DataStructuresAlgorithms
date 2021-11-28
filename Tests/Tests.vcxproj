@@ -166,6 +166,7 @@
   <ItemGroup>
     <ClCompile Include="src\Algorithms\StringTests.cpp" />
     <ClCompile Include="src\DataStructures\ArrayTests.cpp" />
+    <ClCompile Include="src\DataStructures\LinkedListTests.cpp" />
     <ClCompile Include="src\DataStructures\ListTests.cpp" />
   </ItemGroup>
   <ItemGroup>
