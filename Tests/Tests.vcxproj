@@ -170,6 +170,7 @@
     <ClCompile Include="src\DataStructures\ListTests.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\DataStructures\ReferenceCounter.h" />
     <ClInclude Include="src\DataStructures\Tracer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
