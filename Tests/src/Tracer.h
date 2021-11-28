@@ -9,7 +9,7 @@ namespace Test = Microsoft::VisualStudio::CppUnitTestFramework;
 class Tracer {
 public:
 	Tracer() : Tracer("No Name") {}
-	Tracer(std::string name) : name(name), ID(nextID++) {
+	Tracer(std::string name) : name(name), ID(NextID()) {
 		std::ostringstream message;
 		message << "[+]  " << name << " constructed [" << ID << "]";
 		Test::Logger::WriteMessage(message.str().c_str());
@@ -23,7 +23,7 @@ public:
 
 	Tracer(const Tracer& other) {
 		name = other.name;
-		ID = nextID++;
+		ID = NextID();
 
 		std::ostringstream message;
 		message << "[+=] " << name << " copy constructed [" << other.ID << "] --> [" << ID << "]";
@@ -42,7 +42,7 @@ public:
 
 	Tracer(Tracer&& other) {
 		name = other.name;
-		ID = nextID++;
+		ID = NextID();
 
 		other.name += " (Moved From)";
 
@@ -68,7 +68,8 @@ public:
 	unsigned int ID;
 
 private:
-	static unsigned int nextID;
+	unsigned int NextID() {
+		static unsigned int nextID = 0;
+		return nextID++;
+	}
 };
-
-unsigned int Tracer::nextID = 0;
