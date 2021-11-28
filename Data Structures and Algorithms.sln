@@ -6,10 +6,14 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataStructures", "DataStructures\DataStructures.vcxproj", "{3E7746CE-603F-4BB9-B8E6-D79D64E46760}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Algorithms", "Algorithms\Algorithms.vcxproj", "{7D508DC9-1FEF-4071-B025-E832F9D8CF3D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3E7746CE-603F-4BB9-B8E6-D79D64E46760} = {3E7746CE-603F-4BB9-B8E6-D79D64E46760}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tests", "Tests\Tests.vcxproj", "{06A7CF02-C450-4A76-BB32-60CD14611915}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7D508DC9-1FEF-4071-B025-E832F9D8CF3D} = {7D508DC9-1FEF-4071-B025-E832F9D8CF3D}
+		{3E7746CE-603F-4BB9-B8E6-D79D64E46760} = {3E7746CE-603F-4BB9-B8E6-D79D64E46760}
 	EndProjectSection
 EndProject
 Global
