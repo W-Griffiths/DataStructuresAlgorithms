@@ -1,5 +1,6 @@
 #include "CppUnitTest.h"
 #include "LinkedList.h"
+#include "ReferenceCounter.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -12,7 +13,25 @@ namespace LinkedList {
 		TEST_METHOD(DefaultConstructed)
 		{
 			ds::LinkedList<int> list;
-			//Assert::IsNull(list);
+		}
+
+	};
+
+	TEST_CLASS(Lifetime)
+	{
+	public:
+
+		TEST_METHOD(DestructorsFire)
+		{
+			int* refCount = new int{ 0 };
+			{
+				ds::LinkedList<ReferenceCounter> counters;
+				counters.Insert({ refCount });
+				Assert::AreEqual(1, *refCount);
+				counters.Insert({ refCount });
+				Assert::AreEqual(2, *refCount);
+			}
+			Assert::AreEqual(0, *refCount);
 		}
 
 	};
