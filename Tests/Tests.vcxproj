@@ -164,11 +164,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\ArrayTests.cpp" />
-    <ClCompile Include="src\ListTests.cpp" />
+    <ClCompile Include="src\DataStructures\ArrayTests.cpp" />
+    <ClCompile Include="src\DataStructures\ListTests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Tracer.h" />
+    <ClInclude Include="src\DataStructures\Tracer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
