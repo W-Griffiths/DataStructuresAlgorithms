@@ -20,7 +20,9 @@ namespace ds {
 			delete[] array;
 		}
 
-		const size_t Size() const { return size; }
+		size_t Size() const { return size; }
+
+		bool IsEmpty() const { return Size() == 0; }
 
 		void Add(T& obj) {
 			if (size == capacity) {

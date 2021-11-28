@@ -14,11 +14,13 @@ namespace List {
 		{
 			ds::List<int> list(0);
 			Assert::AreEqual(0, static_cast<int>(list.Size()));
+			Assert::IsTrue(list.IsEmpty());
 		}
 		TEST_METHOD(ConstructedWith100Capacity)
 		{
 			ds::List<int> list(100);
 			Assert::AreEqual(0, static_cast<int>(list.Size()));
+			Assert::IsTrue(list.IsEmpty());
 		}
 	};
 
