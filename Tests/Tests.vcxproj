@@ -164,6 +164,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\ArrayTests.cpp" />
     <ClCompile Include="src\ListTests.cpp" />
   </ItemGroup>
   <ItemGroup>
