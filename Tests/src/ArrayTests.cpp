@@ -60,4 +60,83 @@ namespace Array {
 		}
 	};
 
+	TEST_CLASS(Iterators)
+	{
+	public:
+
+		TEST_METHOD(RangeForLoop)
+		{
+			ds::Array<int, 5> nums;
+			nums[0] = 5;
+			nums[1] = 8;
+			nums[2] = 7;
+			nums[3] = 1;
+			nums[4] = 2;
+
+			int sum = 0;
+			for (auto& num : nums)
+			{
+				sum += num;
+			}
+
+			Assert::AreEqual(23, sum);
+		}
+
+		TEST_METHOD(ForLoop)
+		{
+			ds::Array<int, 5> nums;
+			nums[0] = 5;
+			nums[1] = 8;
+			nums[2] = 7;
+			nums[3] = 1;
+			nums[4] = 2;
+
+			int sum = 0;
+			for (auto& it = nums.begin(); it != nums.end(); it++)
+			{
+				sum += *it;
+			}
+
+			Assert::AreEqual(23, sum);
+		}
+
+		TEST_METHOD(PartialIterLoop)
+		{
+			ds::Array<int, 5> nums;
+			nums[0] = 5;
+			nums[1] = 8;
+			nums[2] = 7;
+			nums[3] = 1;
+			nums[4] = 2;
+
+			int sum = 0;
+			auto it = nums.begin() + 1;
+			auto end = it + 3;
+			while (it != end) {
+				sum += *it;
+				it++;
+			}
+
+			Assert::AreEqual(16, sum);
+		}
+
+		TEST_METHOD(ReverseForLoop)
+		{
+			ds::Array<int, 5> nums;
+			nums[0] = 5;
+			nums[1] = 8;
+			nums[2] = 7;
+			nums[3] = 1;
+			nums[4] = 2;
+
+			int sum = 0;
+			for (auto& it = nums.end() - 1; it != nums.begin() - 1; it--)
+			{
+				sum += *it;
+			}
+
+			Assert::AreEqual(23, sum);
+		}
+	};
+
 }
