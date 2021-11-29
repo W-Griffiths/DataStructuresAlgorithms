@@ -28,7 +28,7 @@ public:
 		this->countPtr = other.countPtr;
 		other.countPtr = nullptr;
 	}
-	ReferenceCounter(ReferenceCounter&& other) {
+	ReferenceCounter(ReferenceCounter&& other) noexcept {
 		this->countPtr = other.countPtr;
 		other.countPtr = nullptr;
 	}
@@ -38,7 +38,7 @@ public:
 		other.countPtr = nullptr;
 		return *this;
 	}
-	ReferenceCounter& operator= (ReferenceCounter&& other) {
+	ReferenceCounter& operator= (ReferenceCounter&& other) noexcept {
 		this->countPtr = other.countPtr;
 		other.countPtr = nullptr;
 		return *this;
