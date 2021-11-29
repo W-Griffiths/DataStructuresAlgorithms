@@ -1,84 +1,93 @@
 #pragma once
-#include <functional>
 #include "LinkedList.h"
+#include <functional>
 
 namespace ds {
-	template <typename Key, typename Value>
+	template <typename T>
 	class HashTable {
 	public:
 
-		HashTable() : arraySize(7), array(new LinkedList<KeyValuePair>[arraySize]) {}
+		HashTable() : arraySize(7), array(new LinkedList<T>[arraySize]), numEntries(0) {}
 
-		~HashTable() {
+		virtual ~HashTable() {
 			delete[] array;
 		}
 
-		void Add(const Key& key, const Value& val) {
+		void Add(const T& value) {
+			size_t index = GetIndex(value);
+			array[index].Insert(value);
 
+			numEntries++;
+			CheckForTableResize();
 		}
 
-		Value& operator[] (const Key& key) {
-			auto [found, value] = Search(key);
-			
-			size_t index = GetIndex(key);
-			auto listToSearch = array[index];
-			for (auto& kv : listToSearch) {
-				if (kv.key == key) {
-					return kv.value;
-				}
-			}
-			// Key not found
-			listToSearch.Insert({ key, Value{} });
-
+		bool Contains(const T& value) const {
+			auto& [result, _] = Search(value);
+			return result;
 		}
-
-		const Value& operator[] (const Key& key) const {
-			size_t index = GetIndex(key);
-			auto listToSearch = array[index];
-			for (auto& kv : listToSearch) {
-				if (kv.key == key) {
-					return kv.value;
-				}
-			}
-			// Key not found
-			throw std::invalid_argument("Key not found");
-		}
-
 
 	private:
+		size_t arraySize;
+		LinkedList<T>* array;
 
-		std::pair<bool, Value&> Search(const Key& key) const {
-			size_t index = GetIndex(key);
-			auto listToSearch = array[index];
-			for (auto& kv : listToSearch) {
-				if (kv.key == key) {
-					return { true, kv.value };
+		size_t numEntries;
+		const float maxLoadFactor = 0.8f;
+
+		const std::hash<T> hasher;
+
+		const std::pair<bool, const T*> Search(const T& value) const {
+			size_t index = GetIndex(value);
+			auto& listToSearch = array[index];
+			for (const T& item : listToSearch) {
+				if (item == value) {
+					return { true, &value };
 				}
 			}
 			return { false, nullptr };
 		}
-		
-		Value& CreateDefault(const Key& key) {
 
+		const size_t Hash(const T& value) const {
+			return hasher(value);
 		}
 
-		struct KeyValuePair {
-			KeyValuePair(Key k, Value v) : key(k), value(v) {}
-			Key key;
-			Value value;
-		};
-
-		size_t arraySize;
-		LinkedList<KeyValuePair>* array;
-
-		const std::hash<Key> hasher;
-
-		const size_t Hash(const Key& key) const {
-			return hasher(key);
+		const size_t GetIndex(const T& value) const {
+			return Hash(value) % arraySize;
 		}
 
-		const size_t GetIndex(const Key& key) const {
-			return Hash(key) % arraySize;
-		}
+		void CheckForTableResize();
+		void IncreaseTableSize();
+		void Rehash(const size_t oldSize);
+
 	};
+
+	template<typename T>
+	void HashTable<T>::CheckForTableResize() {
+		const float loadFactor = static_cast<float>(numEntries) / static_cast<float>(arraySize);
+		if (loadFactor > maxLoadFactor) {
+			IncreaseTableSize();
+		}
+		
+	}
+	template<typename T>
+	void HashTable<T>::IncreaseTableSize() {
+		const size_t oldSize = arraySize;
+		// TODO - lookup next prime after doubling?
+		arraySize = (arraySize * 2) + 1; // Guarantees odd number
+
+		Rehash(oldSize);
+	}
+	template<typename T>
+	void HashTable<T>::Rehash(const size_t oldSize) {
+		LinkedList<T>* oldArray = array;
+		array = new LinkedList<T>[arraySize];
+
+		for (size_t i = 0; i < oldSize; i++) {
+			for (auto& entry : oldArray[i]) {
+				Add(entry);
+			}
+		}
+
+		delete[] oldArray;
+	}
+
 }
