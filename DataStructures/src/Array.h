@@ -5,11 +5,6 @@ namespace ds {
 	class Array {
 	public:
 
-		Array() : array(new T[size]) {}
-		~Array() {
-			delete[] array;
-		}
-
 		T& operator[] (size_t index) {
 			return array[index];
 		}
@@ -22,7 +17,8 @@ namespace ds {
 		}
 
 	private:
-		T* array;
+
+		T array[size];
 
 	public:
 

@@ -9,12 +9,6 @@ namespace Array {
 	TEST_CLASS(Construction)
 	{
 	public:
-
-		TEST_METHOD(ConstructedWithZeroCapacity)
-		{
-			ds::Array<int, 0> arr;
-			Assert::AreEqual(0, static_cast<int>(arr.Size()));
-		}
 		TEST_METHOD(ConstructedWith100Capacity)
 		{
 			ds::Array<int, 100> arr;
