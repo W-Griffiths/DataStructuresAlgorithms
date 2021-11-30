@@ -62,6 +62,9 @@ namespace ds {
 			const bool operator!=(const Iterator& other) const {
 				return !operator==(other);
 			}
+
+			bool PointsToEnd() const { return current == nullptr; }
+
 		private:
 			Node* current;
 		};

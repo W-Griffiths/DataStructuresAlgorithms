@@ -1,6 +1,7 @@
 #pragma once
 #include "LinkedList.h"
 #include <functional>
+#include <memory>
 
 namespace ds {
 	template <typename T>
@@ -57,6 +58,77 @@ namespace ds {
 		void CheckForTableResize();
 		void IncreaseTableSize();
 		void Rehash(const size_t oldSize);
+
+	public:
+
+		class Iterator {
+		public:
+
+			static Iterator BeginIterator(LinkedList<T>* beginArrayPtr, size_t length) {
+				Iterator iterator{ beginArrayPtr, beginArrayPtr->begin() };
+				iterator.end = std::make_shared<Iterator>(EndIterator(beginArrayPtr + length));
+
+				// Make sure the iterator points to the first valid element
+				if (!iterator.PointsToEnd() && iterator.iter.PointsToEnd()) {
+					++iterator;
+				}
+
+				return iterator;
+			}
+
+			static const Iterator EndIterator(LinkedList<T>* endArrayPtr) {
+				auto* lastArrayPtr = endArrayPtr - 1;
+				return Iterator{ lastArrayPtr, lastArrayPtr->end() };
+			}
+
+			const T& operator*() {
+				return *iter;
+			}
+
+			Iterator& operator++() {
+				if (!iter.PointsToEnd()) {
+					iter++;
+					return *this;
+				}
+
+				while (!PointsToEnd() && iter.PointsToEnd()) {
+					arrayPtr++;
+					iter = arrayPtr->begin();
+				}
+				return *this;
+			}
+			Iterator operator++(int) {
+				Iterator iter = *this;
+				++(*this);
+				return iter;
+			}
+
+			const bool operator==(const Iterator& other) const {
+				return arrayPtr == other.arrayPtr
+					&& iter == other.iter;
+			}
+			const bool operator!=(const Iterator& other) const {
+				return !operator==(other);
+			}
+
+		private:
+			Iterator(LinkedList<T>* arrayPtr, typename LinkedList<T>::Iterator iter) : arrayPtr(arrayPtr), iter(iter) { }
+
+			LinkedList<T>* arrayPtr;
+			typename LinkedList<T>::Iterator iter;
+			std::shared_ptr<Iterator> end;
+
+			bool PointsToEnd() {
+				return *this == *end;
+			}
+		};
+
+		Iterator begin() const {
+			return Iterator::BeginIterator(array, arraySize);
+		}
+		const Iterator end() const {
+			return Iterator::EndIterator(array + arraySize);
+		}
 
 	};
 

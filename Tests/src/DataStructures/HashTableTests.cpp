@@ -63,6 +63,36 @@ namespace HashTable {
 
 	};
 
+	TEST_CLASS(Iterator)
+	{
+	public:
+
+		TEST_METHOD(RangeForLoop)
+		{
+			ds::HashTable<int> numbers;
+			numbers.Add(33);
+			numbers.Add(33);
+			numbers.Add(33);
+
+			int sum = 0;
+			for (auto number : numbers) {
+				sum += number;
+			}
+
+			Assert::AreEqual(99, sum);
+		}
+
+		TEST_METHOD(Const)
+		{
+			ds::HashTable<int> numbers;
+			numbers.Add(33);
+
+			auto begin = numbers.begin();
+			//*begin = 3; // Should not compile
+		}
+
+	};
+
 	/*TEST_CLASS(Indexers)
 	{
 	public:
