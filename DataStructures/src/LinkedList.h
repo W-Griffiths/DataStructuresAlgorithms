@@ -30,8 +30,8 @@ namespace ds {
 			Node(const T& val) : value(val) {}
 			Node(T&& val) : value(std::move(val)) {}
 
-			Node* next = nullptr;
 			T value;
+			Node* next = nullptr;
 		};
 
 		Node* first = nullptr;
