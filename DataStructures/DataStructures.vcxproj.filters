@@ -27,5 +27,8 @@
     <ClInclude Include="src\HashTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\HashSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

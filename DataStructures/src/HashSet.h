@@ -1,54 +1,28 @@
 #pragma once
-#include "LinkedList.h"
-#include <functional>
+#include "HashTable.h"
 
 namespace ds {
 	template <typename T>
-	class HashSet {
+	class HashSet : public HashTable<T> {
 	public:
 
-		HashSet() : arraySize(7), array(new LinkedList<T>[arraySize]) {}
-
-		~HashSet() {
-			delete[] array;
+		virtual void Add(const T& value) {
+			TryAdd(value);
 		}
 
-		void Add(const T& value) {
-
-		}
-
+		/// <summary>
+		/// Returns a bool indicating whether add was successful.
+		/// </summary>
+		/// <returns>Returns false if item already exists in the set.</returns>
 		bool TryAdd(const T& value) {
-			return true;
-		}
-
-		bool Contains(const T& value) {
-			return false;
-		}
-
-	private:
-
-		/*std::pair<bool, Value&> Search(const Key& key) const {
-			size_t index = GetIndex(key);
-			auto listToSearch = array[index];
-			for (auto& kv : listToSearch) {
-				if (kv.key == key) {
-					return { true, kv.value };
-				}
+			if (HashTable<T>::Contains(value)) {
+				return false;
 			}
-			return { false, nullptr };
-		}*/
-
-		size_t arraySize;
-		LinkedList<T>* array;
-
-		const std::hash<T> hasher;
-
-		const size_t Hash(const T& value) const {
-			return hasher(value);
+			else {
+				HashTable<T>::Add(value);
+				return true;
+			}
 		}
 
-		const size_t GetIndex(const T& value) const {
-			return Hash(value) % arraySize;
-		}
 	};
 }

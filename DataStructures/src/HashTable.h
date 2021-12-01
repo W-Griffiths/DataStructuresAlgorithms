@@ -15,7 +15,7 @@ namespace ds {
 			delete[] array;
 		}
 
-		void Add(const T& value) {
+		virtual void Add(const T& value) {
 			size_t index = GetIndex(value);
 			array[index].Insert(value);
 
