@@ -48,13 +48,18 @@ namespace LinkedList {
 			nums.Insert(3);
 			nums.Insert(4);
 			nums.Insert(5);
+			nums.Insert(5);
+			nums.Insert(4);
+			nums.Insert(3);
+			nums.Insert(2);
+			nums.Insert(1);
 
 			int sum = 0;
 			for (auto& num : nums) {
 				sum += num;
 			}
 
-			Assert::AreEqual(15, sum);
+			Assert::AreEqual(30, sum);
 		}
 
 		TEST_METHOD(ForLoop)
