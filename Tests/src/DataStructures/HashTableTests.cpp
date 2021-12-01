@@ -88,7 +88,11 @@ namespace HashTable {
 			numbers.Add(33);
 
 			auto begin = numbers.begin();
-			//*begin = 3; // Should not compile
+
+			// Should not compile
+			//*begin = 3;
+			//auto end = numbers.end();
+			//end++;
 		}
 
 	};

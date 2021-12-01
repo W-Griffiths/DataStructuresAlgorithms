@@ -8,7 +8,8 @@ namespace ds {
 	class HashTable {
 	public:
 
-		HashTable() : arraySize(7), array(new LinkedList<T>[arraySize]), numEntries(0) {}
+		using listType = LinkedList<T>;
+		HashTable() : arraySize(7), array(new listType[arraySize]), numEntries(0), hasher() {}
 
 		virtual ~HashTable() {
 			delete[] array;
@@ -29,7 +30,7 @@ namespace ds {
 
 	private:
 		size_t arraySize;
-		LinkedList<T>* array;
+		listType* array;
 
 		size_t numEntries;
 		const float maxLoadFactor = 0.8f;
@@ -64,7 +65,7 @@ namespace ds {
 		class Iterator {
 		public:
 
-			static Iterator BeginIterator(LinkedList<T>* beginArrayPtr, size_t length) {
+			static Iterator BeginIterator(listType* beginArrayPtr, size_t length) {
 				Iterator iterator{ beginArrayPtr, beginArrayPtr->begin() };
 				iterator.end = std::make_shared<Iterator>(EndIterator(beginArrayPtr + length));
 
@@ -76,7 +77,7 @@ namespace ds {
 				return iterator;
 			}
 
-			static const Iterator EndIterator(LinkedList<T>* endArrayPtr) {
+			static const Iterator EndIterator(listType* endArrayPtr) {
 				auto* lastArrayPtr = endArrayPtr - 1;
 				return Iterator{ lastArrayPtr, lastArrayPtr->end() };
 			}
@@ -112,10 +113,10 @@ namespace ds {
 			}
 
 		private:
-			Iterator(LinkedList<T>* arrayPtr, typename LinkedList<T>::Iterator iter) : arrayPtr(arrayPtr), iter(iter) { }
+			Iterator(listType* arrayPtr, typename listType::Iterator iter) : arrayPtr(arrayPtr), iter(iter) { }
 
-			LinkedList<T>* arrayPtr;
-			typename LinkedList<T>::Iterator iter;
+			listType* arrayPtr;
+			typename listType::Iterator iter;
 			std::shared_ptr<Iterator> end;
 
 			bool PointsToEnd() {
@@ -126,7 +127,7 @@ namespace ds {
 		Iterator begin() const {
 			return Iterator::BeginIterator(array, arraySize);
 		}
-		const Iterator end() const {
+		Iterator end() const {
 			return Iterator::EndIterator(array + arraySize);
 		}
 
@@ -150,8 +151,8 @@ namespace ds {
 	}
 	template<typename T>
 	void HashTable<T>::Rehash(const size_t oldSize) {
-		LinkedList<T>* oldArray = array;
-		array = new LinkedList<T>[arraySize];
+		listType* oldArray = array;
+		array = new listType[arraySize];
 
 		for (size_t i = 0; i < oldSize; i++) {
 			for (auto& entry : oldArray[i]) {
