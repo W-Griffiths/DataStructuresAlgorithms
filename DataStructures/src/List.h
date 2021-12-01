@@ -105,10 +105,10 @@ namespace ds {
 				return Iterator(positionPtr - length);
 			}
 
-			const bool operator==(const Iterator& other) const {
+			bool operator==(const Iterator& other) const {
 				return positionPtr == other.positionPtr;
 			}
-			const bool operator!=(const Iterator& other) const {
+			bool operator!=(const Iterator& other) const {
 				return !operator==(other);
 			}
 		private:
