@@ -6,6 +6,9 @@ namespace ds {
 	class LinkedList {
 	public:
 		LinkedList() {}
+		LinkedList(LinkedList&) = delete;
+		LinkedList& operator=(LinkedList&) = delete;
+
 		~LinkedList() {
 			Node* link = first;
 			while (link) {
