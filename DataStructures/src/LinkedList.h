@@ -5,6 +5,7 @@ namespace ds {
 	template<typename T>
 	class LinkedList {
 	public:
+		LinkedList() {}
 		~LinkedList() {
 			Node* link = first;
 			while (link) {
