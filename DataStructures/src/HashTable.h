@@ -70,7 +70,7 @@ namespace ds {
 				iterator.end = std::make_shared<Iterator>(EndIterator(beginArrayPtr + length));
 
 				// Make sure the iterator points to the first valid element
-				if (!iterator.PointsToEnd() && iterator.iter.PointsToEnd()) {
+				if (!iterator.PointsToEnd() && iterator.iterPointsToEnd()) {
 					++iterator;
 				}
 
@@ -87,12 +87,12 @@ namespace ds {
 			}
 
 			Iterator& operator++() {
-				if (!iter.PointsToEnd()) {
+				if (!iterPointsToEnd()) {
 					iter++;
 					return *this;
 				}
 
-				while (!PointsToEnd() && iter.PointsToEnd()) {
+				while (!PointsToEnd() && iterPointsToEnd()) {
 					arrayPtr++;
 					iter = arrayPtr->begin();
 				}
@@ -119,8 +119,11 @@ namespace ds {
 			typename listType::Iterator iter;
 			std::shared_ptr<Iterator> end;
 
-			bool PointsToEnd() {
+			bool PointsToEnd() const {
 				return *this == *end;
+			}
+			bool iterPointsToEnd() const {
+				return iter == arrayPtr->end();
 			}
 		};
 
