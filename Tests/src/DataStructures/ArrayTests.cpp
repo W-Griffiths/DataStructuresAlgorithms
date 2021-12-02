@@ -37,6 +37,30 @@ namespace Array {
 		}
 	};
 
+	TEST_CLASS(Equality)
+	{
+	public:
+		TEST_METHOD(SameValuesAreEqual)
+		{
+			ds::Array<int> arrayA(5);
+			arrayA[0] = 10;
+			arrayA[1] = 20;
+			arrayA[2] = 30;
+			arrayA[3] = 40;
+			arrayA[4] = 50;
+
+			ds::Array<int> arrayB(5);
+			arrayB[0] = 10;
+			arrayB[1] = 20;
+			arrayB[2] = 30;
+			arrayB[3] = 40;
+			arrayB[4] = 50;
+
+			Assert::IsTrue(arrayA == arrayB);
+		}
+
+	};
+
 	TEST_CLASS(Lifetime)
 	{
 	public:
