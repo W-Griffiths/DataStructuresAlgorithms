@@ -13,6 +13,9 @@ namespace ds {
 		HashTable(std::function<const SearchKey&(const T&)> GetKey = [](const T& t) -> const SearchKey& {return t;})
 			: arraySize(7), array(new listType[arraySize]), numEntries(0), hasher(), GetSearchKey(GetKey) { }
 
+		HashTable(const HashTable& other) = delete;
+		HashTable& operator=(const HashTable& other) = delete;
+
 		virtual ~HashTable() {
 			delete[] array;
 		}
