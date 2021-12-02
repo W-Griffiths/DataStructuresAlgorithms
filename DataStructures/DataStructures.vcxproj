@@ -146,6 +146,7 @@
     <ClInclude Include="src\Array.h" />
     <ClInclude Include="src\HashTable.h" />
     <ClInclude Include="src\HashSet.h" />
+    <ClInclude Include="src\Dictionary.h" />
     <ClInclude Include="src\LinkedList.h" />
     <ClInclude Include="src\List.h" />
   </ItemGroup>
