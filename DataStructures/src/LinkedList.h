@@ -35,8 +35,8 @@ namespace ds {
 			Node(const T& val) : value(val) {}
 			Node(T&& val) : value(std::move(val)) {}
 
-			Node* next = nullptr;
 			T value;
+			Node* next = nullptr;
 		};
 
 		Node* first = nullptr;
@@ -67,6 +67,9 @@ namespace ds {
 			bool operator!=(const Iterator& other) const {
 				return !operator==(other);
 			}
+
+			bool PointsToEnd() const { return current == nullptr; }
+
 		private:
 			Node* current;
 		};
