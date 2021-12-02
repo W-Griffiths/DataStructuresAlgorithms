@@ -6,7 +6,7 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace String {
 
-	TEST_CLASS(Unique)
+	TEST_CLASS(UniqueASCII)
 	{
 	public:
 
