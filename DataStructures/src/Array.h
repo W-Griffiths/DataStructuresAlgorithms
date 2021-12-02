@@ -18,6 +18,21 @@ namespace ds {
 			return size;
 		}
 
+		bool operator==(const Array& other) const {
+			if (Size() != other.Size()) {
+				return false;
+			}
+
+			for (size_t i = 0; i < Size(); i++) {
+				if (array[i] != other.array[i]) {
+					return false;
+				}
+			}
+
+			return true;
+		}
+		bool operator!=(const Array& other) const { return !operator==(other); }
+
 	private:
 
 		T* array;
