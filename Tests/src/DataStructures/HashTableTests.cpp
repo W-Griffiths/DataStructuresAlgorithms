@@ -47,6 +47,22 @@ namespace HashTable {
 			Assert::IsTrue(numbers.Contains(33));
 		}
 
+		TEST_METHOD(AddStrings)
+		{
+			ds::HashTable<std::string> composers;
+			composers.Add("Mozart");
+			composers.Add("Vivaldi");
+			composers.Add("Shostakovich");
+			composers.Add("Debussy");
+			composers.Add("Beethoven");
+
+			Assert::IsTrue(composers.Contains("Mozart"));
+			Assert::IsTrue(composers.Contains("Vivaldi"));
+			Assert::IsTrue(composers.Contains("Shostakovich"));
+			Assert::IsTrue(composers.Contains("Debussy"));
+			Assert::IsTrue(composers.Contains("Beethoven"));
+		}
+
 		TEST_METHOD(TableShouldResize)
 		{
 			ds::HashTable<int> table;
