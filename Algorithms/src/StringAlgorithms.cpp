@@ -1,5 +1,6 @@
 #include "StringAlgorithms.h"
 #include "Array.h"
+#include "HashSet.h"
 
 namespace alg {
 	namespace string {
@@ -25,6 +26,21 @@ namespace alg {
 					return false;
 				}
 				characterExists[c] = true;
+			}
+
+			return true;
+		}
+
+		bool IsUnique(const std::string& input) {
+			ds::HashSet<char> characters;
+
+			for (auto c : input) {
+				if (c == ' ') continue; // Ignore spaces
+
+				if (!characters.TryAdd(c)) {
+					// Duplicate found, input not unique
+					return false;
+				}
 			}
 
 			return true;
