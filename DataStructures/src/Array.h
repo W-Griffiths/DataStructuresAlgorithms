@@ -1,11 +1,20 @@
 #pragma once
+#include <memory>
 
 namespace ds {
 	template<typename T>
 	class Array {
 	public:
 
-		Array(size_t size) : array(new T[size]), size(size) {}
+		Array(size_t size) : array(std::make_unique<T[]>(size)), size(size) {}
+
+		Array(const Array& other) : array(std::make_unique<T[]>(other.size)), size(other.size) {
+			for (size_t i = 0; i < size; i++)
+			{
+				array[i] = other[i];
+			}
+		}
+		Array& operator=(const Array& other) = delete;
 
 		T& operator[] (size_t index) {
 			return array[index];
@@ -35,7 +44,7 @@ namespace ds {
 
 	private:
 
-		T* array;
+		std::unique_ptr<T[]> array;
 		const size_t size;
 
 	public:
@@ -85,10 +94,10 @@ namespace ds {
 		};
 
 		Iterator begin() {
-			return Iterator(array);
+			return Iterator(array.get());
 		}
 		Iterator end() {
-			return Iterator(array + size);
+			return Iterator(array.get() + size);
 		}
 	};
 }
