@@ -1,17 +1,17 @@
 #include "CppUnitTest.h"
-#include "Array.h"
+#include "StackArray.h"
 #include "Tracer.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-namespace Array {
+namespace StackArray {
 
 	TEST_CLASS(Construction)
 	{
 	public:
 		TEST_METHOD(ConstructedWith100Capacity)
 		{
-			ds::Array<int, 100> arr;
+			ds::StackArray<int, 100> arr;
 			Assert::AreEqual(100, static_cast<int>(arr.Size()));
 		}
 	};
@@ -22,7 +22,7 @@ namespace Array {
 
 		TEST_METHOD(IndexerSetsAndGets)
 		{
-			ds::Array<int, 5> arr;
+			ds::StackArray<int, 5> arr;
 			arr[0] = 5;
 			arr[1] = 10;
 			arr[2] = 5;
@@ -45,7 +45,7 @@ namespace Array {
 		{
 			Tracer outside("Outside Tracer");
 			{
-				ds::Array<Tracer, 3> arr;
+				ds::StackArray<Tracer, 3> arr;
 				arr[0] = Tracer("Inside Tracer 1");
 				arr[1] = Tracer("Inside Tracer 2");
 				arr[2] = outside;
@@ -60,7 +60,7 @@ namespace Array {
 
 		TEST_METHOD(RangeForLoop)
 		{
-			ds::Array<int, 5> nums;
+			ds::StackArray<int, 5> nums;
 			nums[0] = 5;
 			nums[1] = 8;
 			nums[2] = 7;
@@ -78,7 +78,7 @@ namespace Array {
 
 		TEST_METHOD(ForLoop)
 		{
-			ds::Array<int, 5> nums;
+			ds::StackArray<int, 5> nums;
 			nums[0] = 5;
 			nums[1] = 8;
 			nums[2] = 7;
@@ -96,7 +96,7 @@ namespace Array {
 
 		TEST_METHOD(PartialIterLoop)
 		{
-			ds::Array<int, 5> nums;
+			ds::StackArray<int, 5> nums;
 			nums[0] = 5;
 			nums[1] = 8;
 			nums[2] = 7;
@@ -116,7 +116,7 @@ namespace Array {
 
 		TEST_METHOD(ReverseForLoop)
 		{
-			ds::Array<int, 5> nums;
+			ds::StackArray<int, 5> nums;
 			nums[0] = 5;
 			nums[1] = 8;
 			nums[2] = 7;

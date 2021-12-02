@@ -1,5 +1,5 @@
 #include "StringAlgorithms.h"
-#include "Array.h"
+#include "StackArray.h"
 #include "HashSet.h"
 
 namespace alg {
@@ -13,7 +13,7 @@ namespace alg {
 				return false;
 			}
 
-			ds::Array<bool, AsciiSize> characterExists;
+			ds::StackArray<bool, AsciiSize> characterExists;
 			for (auto& i : characterExists) {
 				i = false;
 			}

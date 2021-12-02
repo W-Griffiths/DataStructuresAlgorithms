@@ -143,7 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Array.h" />
+    <ClInclude Include="src\StackArray.h" />
     <ClInclude Include="src\HashTable.h" />
     <ClInclude Include="src\HashSet.h" />
     <ClInclude Include="src\Dictionary.h" />

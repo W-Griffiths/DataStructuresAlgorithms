@@ -18,7 +18,7 @@
     <ClInclude Include="src\List.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Array.h">
+    <ClInclude Include="src\StackArray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\LinkedList.h">

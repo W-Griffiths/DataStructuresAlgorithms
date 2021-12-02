@@ -2,7 +2,7 @@
 
 namespace ds {
 	template<typename T, size_t size>
-	class Array {
+	class StackArray {
 	public:
 
 		T& operator[] (size_t index) {

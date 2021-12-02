@@ -18,7 +18,7 @@
     <ClCompile Include="src\DataStructures\ListTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\DataStructures\ArrayTests.cpp">
+    <ClCompile Include="src\DataStructures\StackArrayTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Algorithms\StringTests.cpp">
