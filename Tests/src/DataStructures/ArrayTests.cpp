@@ -16,6 +16,28 @@ namespace Array {
 		}
 	};
 
+	TEST_CLASS(Copying)
+	{
+	public:
+
+		TEST_METHOD(CopyConstruct)
+		{
+			ds::Array<int> arrayA(5);
+			arrayA[0] = 10;
+			arrayA[1] = 20;
+			arrayA[2] = 30;
+			arrayA[3] = 40;
+			arrayA[4] = 50;
+
+			ds::Array<int> arrayB{ arrayA };
+			Assert::IsTrue(arrayA == arrayB);
+
+			arrayB[0] = 99;
+			Assert::IsFalse(arrayA == arrayB);
+		}
+	};
+
+
 	TEST_CLASS(Indexer)
 	{
 	public:
