@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Sort.h" />
     <ClInclude Include="src\StringAlgorithms.h" />
   </ItemGroup>
   <ItemGroup>
