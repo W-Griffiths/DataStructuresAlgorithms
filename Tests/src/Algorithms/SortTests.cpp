@@ -1,6 +1,7 @@
 #include "CppUnitTest.h"
 #include "Sort.h"
 #include "Array.h"
+#include "Random.h"
 #include <string>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -11,6 +12,36 @@ namespace Sort {
 	{
 	public:
 
+		TEST_METHOD(Random)
+		{
+			alg::Random nonDeterministic1(0, 10);
+			alg::Random nonDeterministic2(0, 10);
+
+			bool allTheSame = true;
+			for (size_t i = 0; i < 1'000'000; i++)
+			{
+				if (nonDeterministic1.Next() != nonDeterministic2.Next()) {
+					allTheSame = false;
+					break;
+				}
+			}
+			Assert::IsFalse(allTheSame);
+
+			const int seed = 33;
+			alg::Random deterministic1(0, 10, seed);
+			alg::Random deterministic2(0, 10, seed);
+
+			allTheSame = true;
+			for (size_t i = 0; i < 1'000; i++)
+			{
+				if (deterministic1.Next() != deterministic2.Next()) {
+					allTheSame = false;
+					break;
+				}
+			}
+			Assert::IsTrue(allTheSame);
+		}
+		
 		TEST_METHOD(Shuffle)
 		{
 			const int length = 1000;
