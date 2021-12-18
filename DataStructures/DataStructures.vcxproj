@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Iterators\RandomAccessIterator.h" />
     <ClInclude Include="src\StackArray.h" />
     <ClInclude Include="src\HashTable.h" />
     <ClInclude Include="src\HashSet.h" />
