@@ -147,10 +147,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Random.h" />
     <ClInclude Include="src\Sort.h" />
     <ClInclude Include="src\StringAlgorithms.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Random.cpp" />
     <ClCompile Include="src\StringAlgorithms.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
