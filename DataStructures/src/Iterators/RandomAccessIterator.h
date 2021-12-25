@@ -1,4 +1,5 @@
 #pragma once
+#include <cstddef>
 
 template<typename T>
 class RandomAccessIterator {
@@ -35,6 +36,10 @@ public:
 	}
 	RAI operator-(size_t length) const {
 		return RAI(positionPtr - length);
+	}
+
+	T& operator[](ptrdiff_t n){
+		return *(positionPtr + n);
 	}
 
 	bool operator==(const RAI& other) const {

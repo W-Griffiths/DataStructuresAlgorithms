@@ -8,6 +8,24 @@ namespace Iterators {
 	TEST_CLASS(RandomAccess)
 	{
 	public:
+		TEST_METHOD(Indexer)
+		{
+			ds::List<int> list;
+
+			for (int i = 0; i < 10; i++)
+			{
+				list.Add(i);
+			}
+
+			auto iter = list.begin();
+			
+			Assert::AreEqual(0, iter[0]);
+			Assert::AreEqual(5, iter[5]);
+			Assert::AreEqual(7, iter[7]);
+
+			auto iter2 = iter + 1;
+			Assert::AreEqual(iter[0], iter2[-1]);
+		}
 		TEST_METHOD(Comparison)
 		{
 			ds::List<int> list;
