@@ -1,7 +1,9 @@
 #include "CppUnitTest.h"
 #include "Sort.h"
 #include "Array.h"
+#include "List.h"
 #include "Random.h"
+#include "Utilities.h"
 #include <string>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -44,7 +46,7 @@ namespace Sort {
 			Assert::IsTrue(allTheSame);
 		}
 		
-		TEST_METHOD(Shuffle)
+		TEST_METHOD(ShuffleInts)
 		{
 			const int length = 1000;
 			ds::Array<int> arrayA(length);
@@ -60,34 +62,45 @@ namespace Sort {
 
 			Assert::IsTrue(arrayA == arrayB || arrayA == arrayC);
 			
-			alg::Shuffle(arrayA);
-			alg::Shuffle(arrayB);
-			alg::Shuffle(arrayC);
+			util::Shuffle(arrayA);
+			util::Shuffle(arrayB);
+			util::Shuffle(arrayC);
 
 			Assert::IsTrue(arrayA != arrayB || arrayA != arrayC);
 		}
 
 		TEST_METHOD(ShuffleStrings)
 		{
-			const int length = 20;
-			ds::Array<int> arrayA(length);
-			ds::Array<int> arrayB(length);
-			ds::Array<int> arrayC(length);
+			ds::List<std::string> strings;
+			strings.Add("The");
+			strings.Add("quick");
+			strings.Add("brown");
+			strings.Add("fox");
+			strings.Add("jumps");
+			strings.Add("over");
+			strings.Add("the");
+			strings.Add("lazy");
+			strings.Add("dog");
 
-			for (int i = 0; i < length; i++)
-			{
-				arrayA[i] = i;
-				arrayB[i] = i;
-				arrayC[i] = i;
+
+			ds::List<std::string> stringsCopy = strings;
+
+			for (size_t i = 0; i < strings.Size(); i++) {
+				Assert::IsTrue(strings[i] == stringsCopy[i]);
 			}
 
-			Assert::IsTrue(arrayA == arrayB || arrayA == arrayC);
 
-			alg::Shuffle(arrayA);
-			alg::Shuffle(arrayB);
-			alg::Shuffle(arrayC);
+			util::Shuffle(strings.begin(), strings.end());
 
-			Assert::IsTrue(arrayA != arrayB || arrayA != arrayC);
+			bool theSame = true;
+			for (size_t i = 0; i < strings.Size(); i++) {
+				if (strings[i] != stringsCopy[i]) {
+					theSame = false;
+					break;
+				}
+			}
+
+			Assert::IsFalse(theSame);
 		}
 
 	};
