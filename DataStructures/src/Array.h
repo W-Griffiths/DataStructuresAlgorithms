@@ -52,10 +52,10 @@ namespace ds {
 
 		using Iterator = RandomAccessIterator<T>;
 
-		Iterator begin() {
+		Iterator begin() const {
 			return Iterator(array.get());
 		}
-		Iterator end() {
+		Iterator end() const {
 			return Iterator(array.get() + size);
 		}
 	};
