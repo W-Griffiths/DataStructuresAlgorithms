@@ -38,6 +38,10 @@ public:
 		return RAI(positionPtr - length);
 	}
 
+	ptrdiff_t operator-(const RAI& other) const {
+		return positionPtr - other.positionPtr;
+	}
+
 	T& operator[](ptrdiff_t n){
 		return *(positionPtr + n);
 	}
