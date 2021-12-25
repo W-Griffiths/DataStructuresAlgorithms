@@ -43,6 +43,18 @@ public:
 	bool operator!=(const RAI& other) const {
 		return !operator==(other);
 	}
+	bool operator>(const RAI& other) const {
+		return positionPtr > other.positionPtr;
+	}
+	bool operator<(const RAI& other) const {
+		return positionPtr < other.positionPtr;
+	}
+	bool operator>=(const RAI& other) const {
+		return positionPtr >= other.positionPtr;
+	}
+	bool operator<=(const RAI& other) const {
+		return positionPtr <= other.positionPtr;
+	}
 private:
 	T* positionPtr;
 };
