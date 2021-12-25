@@ -14,18 +14,20 @@ namespace Sort {
 
 		TEST_METHOD(Random)
 		{
-			util::Random nonDeterministic1(0, 10);
-			util::Random nonDeterministic2(0, 10);
+			util::Random* nonDeterministic1 = new util::Random(0, 10);
+			util::Random* nonDeterministic2 = new util::Random(0, 10);
 
 			bool allTheSame = true;
-			for (size_t i = 0; i < 1'000'000; i++)
+			for (size_t i = 0; i < 100'000; i++)
 			{
-				if (nonDeterministic1.Next() != nonDeterministic2.Next()) {
+				if (nonDeterministic1->Next() != nonDeterministic2->Next()) {
 					allTheSame = false;
 					break;
 				}
 			}
 			Assert::IsFalse(allTheSame);
+			delete nonDeterministic1;
+			delete nonDeterministic2;
 
 			const int seed = 33;
 			util::Random deterministic1(0, 10, seed);
