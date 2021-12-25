@@ -74,10 +74,10 @@ namespace ds {
 
 		using Iterator = RandomAccessIterator<T>;
 
-		Iterator begin() {
+		Iterator begin() const {
 			return Iterator(array);
 		}
-		Iterator end() {
+		Iterator end() const {
 			return Iterator(array + size);
 		}
 	};
