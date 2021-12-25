@@ -36,4 +36,6 @@ namespace util {
 		B = temp;
 	}
 
+	size_t StringLength(const char*);
+
 }
