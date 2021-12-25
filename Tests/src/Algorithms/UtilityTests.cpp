@@ -112,4 +112,35 @@ namespace Utility {
 
 	};
 
+	TEST_CLASS(Swap)
+	{
+	public:
+
+		TEST_METHOD(SwappingChars)
+		{
+			ds::Array<char> array(3);
+
+			array[0] = 'A';
+			array[1] = 'B';
+			array[2] = 'C';
+
+			Assert::AreEqual('A', array[0]);
+			Assert::AreEqual('B', array[1]);
+			Assert::AreEqual('C', array[2]);
+
+			util::Swap(array[0], array[2]);
+
+			Assert::AreEqual('C', array[0]);
+			Assert::AreEqual('B', array[1]);
+			Assert::AreEqual('A', array[2]);
+
+			util::Swap(array[2], array[1]);
+
+			Assert::AreEqual('C', array[0]);
+			Assert::AreEqual('A', array[1]);
+			Assert::AreEqual('B', array[2]);
+		}
+
+	};
+
 }

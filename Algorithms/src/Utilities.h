@@ -31,7 +31,7 @@ namespace util {
 
 	template<typename T>
 	void Swap(T& A, T& B) {
-		T& temp = A;
+		T temp = A;
 		A = B;
 		B = temp;
 	}
