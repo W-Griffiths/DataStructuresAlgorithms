@@ -17,6 +17,14 @@ namespace ds {
 			array = AllocateArray(capacity);
 		}
 
+		List(const List& other) : capacity(other.capacity), array(AllocateArray(capacity)), size(other.size) {
+			for (size_t i = 0; i < size; i++)
+			{
+				array[i] = other[i];
+			}
+		}
+		List& operator=(const List& other) = delete;
+
 		~List() {
 			delete[] array;
 		}
@@ -50,9 +58,9 @@ namespace ds {
 		}
 
 	private:
-		T* array;
 		size_t capacity;
 		size_t size = 0;
+		T* array;
 
 		void IncreaseCapacity() {
 			capacity *= 2;
