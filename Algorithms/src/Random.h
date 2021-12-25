@@ -1,7 +1,7 @@
 #pragma once
 #include <random>
 
-namespace alg {
+namespace util {
 
 	class Random {
 	public:

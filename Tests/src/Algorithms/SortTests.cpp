@@ -14,8 +14,8 @@ namespace Sort {
 
 		TEST_METHOD(Random)
 		{
-			alg::Random nonDeterministic1(0, 10);
-			alg::Random nonDeterministic2(0, 10);
+			util::Random nonDeterministic1(0, 10);
+			util::Random nonDeterministic2(0, 10);
 
 			bool allTheSame = true;
 			for (size_t i = 0; i < 1'000'000; i++)
@@ -28,8 +28,8 @@ namespace Sort {
 			Assert::IsFalse(allTheSame);
 
 			const int seed = 33;
-			alg::Random deterministic1(0, 10, seed);
-			alg::Random deterministic2(0, 10, seed);
+			util::Random deterministic1(0, 10, seed);
+			util::Random deterministic2(0, 10, seed);
 
 			allTheSame = true;
 			for (size_t i = 0; i < 1'000; i++)

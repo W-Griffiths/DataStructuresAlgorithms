@@ -1,7 +1,7 @@
 #include "Random.h"
 #include <chrono>
 
-namespace alg {
+namespace util {
 
 	Random::Random(size_t min, size_t max) :	distribution(min, max),
 												generator(static_cast<size_t>(std::chrono::high_resolution_clock::now().time_since_epoch().count())) {}
