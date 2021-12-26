@@ -179,6 +179,7 @@
     <ClCompile Include="src\DataStructures\HashTableTests.cpp" />
     <ClCompile Include="src\DataStructures\LinkedListTests.cpp" />
     <ClCompile Include="src\DataStructures\ListTests.cpp" />
+    <ClCompile Include="src\DataStructures\StackTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\DataStructures\ReferenceCounter.h" />
