@@ -41,6 +41,13 @@ namespace ds {
 			return array[index];
 		}
 
+		void SetAll(T value) {
+			for (size_t i = 0; i < size; i++)
+			{
+				array[i] = value;
+			}
+		}
+
 		constexpr size_t Size() const {
 			return size;
 		}
