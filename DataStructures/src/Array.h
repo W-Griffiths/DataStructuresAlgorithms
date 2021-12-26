@@ -22,6 +22,10 @@ namespace ds {
 			}
 		}
 
+		static Array<T> Empty() {
+			return Array<T>(0);
+		}
+
 		Array(const Array& other) : array(std::make_unique<T[]>(other.size)), size(other.size) {
 			for (size_t i = 0; i < size; i++)
 			{
