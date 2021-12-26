@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Digraph.h" />
     <ClInclude Include="src\Iterators\RandomAccessIterator.h" />
     <ClInclude Include="src\Stack.h" />
     <ClInclude Include="src\StackArray.h" />
@@ -152,6 +153,9 @@
     <ClInclude Include="src\LinkedList.h" />
     <ClInclude Include="src\List.h" />
     <ClInclude Include="src\Array.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Digraph.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
