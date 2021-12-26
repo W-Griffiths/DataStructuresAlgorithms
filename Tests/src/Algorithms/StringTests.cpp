@@ -82,4 +82,50 @@ namespace String {
 		}
 	};
 
+	TEST_CLASS(Permutation)
+	{
+	public:
+
+		TEST_METHOD(IdenticalStringsPass)
+		{
+			std::string fruit1 = "Apricot";
+			std::string fruit2 = "Apricot";
+			Assert::IsTrue(alg::string::IsPermutation(fruit1, fruit2));
+		}
+		TEST_METHOD(PermutationsPass)
+		{
+			std::string dog1 = "labrador";
+			std::string dog2 = "rablardo";
+			std::string dog3 = "lodrarba";
+			Assert::IsTrue(alg::string::IsPermutation(dog1, dog2));
+			Assert::IsTrue(alg::string::IsPermutation(dog1, dog3));
+		}
+		TEST_METHOD(NonPermutationsFail)
+		{
+			std::string fruit = "Banana";
+			std::string fruit2 = "Bananana";
+			std::string fruit3 = "Bonobo";
+			Assert::IsFalse(alg::string::IsPermutation(fruit, fruit2));
+			Assert::IsFalse(alg::string::IsPermutation(fruit, fruit3));
+		}
+		TEST_METHOD(CaseSensitive)
+		{
+			std::string dog1 = "Labrador";
+			std::string dog2 = "labrador";
+			std::string dog3 = "rablador";
+			std::string dog4 = "rabLador";
+			Assert::IsFalse(alg::string::IsPermutation(dog1, dog2));
+			Assert::IsFalse(alg::string::IsPermutation(dog1, dog3));
+			Assert::IsTrue(alg::string::IsPermutation(dog1, dog4));
+		}
+		TEST_METHOD(WithSpaces)
+		{
+			std::string wings = "Red Bull Racing";
+			std::string wings2 = "Bull Red Racing";
+			std::string wings3 = "Red BullRacing";
+			Assert::IsTrue(alg::string::IsPermutation(wings, wings2));
+			Assert::IsFalse(alg::string::IsPermutation(wings, wings3));
+		}
+	};
+
 }

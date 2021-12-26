@@ -1,6 +1,8 @@
 #include "StringAlgorithms.h"
 #include "StackArray.h"
 #include "HashSet.h"
+#include "Array.h"
+#include "Sort.h"
 
 namespace alg {
 	namespace string {
@@ -44,6 +46,21 @@ namespace alg {
 			}
 
 			return true;
+		}
+
+		bool IsPermutation(const std::string& A, const std::string& B) {
+			if (A.length() != B.length()) {
+				// Can't be a permutation if not the same length
+				return false;
+			}
+
+			auto arrayA = ds::Array<char>(A);
+			auto arrayB = ds::Array<char>(B);
+
+			alg::Quicksort(arrayA);
+			alg::Quicksort(arrayB);
+
+			return arrayA == arrayB;
 		}
 	}
 }
