@@ -1,6 +1,7 @@
 #pragma once
 #include "Iterators/RandomAccessIterator.h"
 #include <memory>
+#include <string>
 
 namespace ds {
 	template<typename T>
