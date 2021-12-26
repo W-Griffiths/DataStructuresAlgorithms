@@ -15,6 +15,12 @@ namespace ds {
 			}
 		}
 
+		Array(const std::string string) : array(std::make_unique<T[]>(string.length())), size(string.length()) {
+			for (size_t i = 0; i < string.length(); i++) {
+				array[i] = string[i];
+			}
+		}
+
 		Array(const Array& other) : array(std::make_unique<T[]>(other.size)), size(other.size) {
 			for (size_t i = 0; i < size; i++)
 			{

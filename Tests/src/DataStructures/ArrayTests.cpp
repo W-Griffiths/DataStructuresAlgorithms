@@ -14,6 +14,27 @@ namespace Array {
 			ds::Array<int> arr(100);
 			Assert::AreEqual(100, static_cast<int>(arr.Size()));
 		}
+		TEST_METHOD(ConstructWithCharArray)
+		{
+			ds::Array<char> silver("Mercedes");
+			Assert::AreEqual('M', silver[0]);
+			Assert::AreEqual('e', silver[1]);
+			Assert::AreEqual('r', silver[2]);
+			Assert::AreEqual('c', silver[3]);
+			Assert::AreEqual('s', silver[7]);
+			Assert::AreEqual(8, static_cast<int>(silver.Size()));
+		}
+		TEST_METHOD(ConstructWithString)
+		{
+			std::string car = "Ferrari";
+			
+			ds::Array<char> red(car);
+			Assert::AreEqual('F', red[0]);
+			Assert::AreEqual('r', red[3]);
+			Assert::AreEqual('a', red[4]);
+			Assert::AreEqual('i', red[6]);
+			Assert::AreEqual(7, static_cast<int>(red.Size()));
+		}
 	};
 
 	TEST_CLASS(Copying)
