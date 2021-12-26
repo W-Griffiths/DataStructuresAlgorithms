@@ -8,6 +8,19 @@ namespace util {
 	
 	template<typename T>
 	using RAI = RandomAccessIterator<T>;
+
+	//----- Declarations
+	template<typename T>
+	void Shuffle(RAI<T> begin, RAI<T> end);
+
+	template<typename T>
+	void Shuffle(ds::Array<T>& array);
+
+	template<typename T>
+	void Swap(T& A, T& B);
+
+	size_t StringLength(const char*);
+	//-----
 	
 	template<typename T>
 	void Shuffle(RAI<T> begin, RAI<T> end) {
@@ -36,7 +49,5 @@ namespace util {
 		A = B;
 		B = temp;
 	}
-
-	size_t StringLength(const char*);
 
 }

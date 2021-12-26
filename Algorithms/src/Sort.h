@@ -8,6 +8,24 @@ namespace alg {
 	template<typename T>
 	using RAI = RandomAccessIterator<T>;
 
+	//----- Declarations
+	template<typename T>
+	void Quicksort(RAI<T> begin, RAI<T> end);
+
+	template<typename T>
+	void Quicksort(const ds::Array<T>& array);
+
+	namespace {
+
+		template<typename T>
+		void quicksort(RAI<T> left, RAI<T> right);
+
+		template<typename T>
+		RAI<T> Partition(RAI<T> left, RAI<T> right);
+
+	}
+	//-----
+	
 	template<typename T>
 	void Quicksort(RAI<T> begin, RAI<T> end) {
 		util::Shuffle(begin, end);
