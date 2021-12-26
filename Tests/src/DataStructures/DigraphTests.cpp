@@ -39,6 +39,50 @@ namespace Digraph {
 		}
 	};
 
+	TEST_CLASS(Search)
+	{
+	public:
+		TEST_METHOD(DepthFirstSearch)
+		{
+			ds::Digraph graph(6);
+			graph.AddEdge(0, 2);
+			graph.AddEdge(5, 0);
+			graph.AddEdge(2, 1);
+			graph.AddEdge(1, 0);
+			graph.AddEdge(2, 3);
+			graph.AddEdge(3, 4);
+			graph.AddEdge(4, 2);
+			graph.AddEdge(3, 5);
+
+			auto path = graph.DFS(0, 5);
+
+			Assert::AreEqual(ds::uint{ 4 }, path.Size());
+			Assert::AreEqual(ds::uint{ 0 }, path[0]);
+			Assert::AreEqual(ds::uint{ 2 }, path[1]);
+			Assert::AreEqual(ds::uint{ 3 }, path[2]);
+			Assert::AreEqual(ds::uint{ 5 }, path[3]);
+		}
+
+		TEST_METHOD(DFSReturnsEmptyIfNoPath)
+		{
+			ds::Digraph graph(7);
+			graph.AddEdge(0, 2);
+			graph.AddEdge(0, 5);
+			graph.AddEdge(2, 1);
+			graph.AddEdge(1, 0);
+			graph.AddEdge(2, 3);
+			graph.AddEdge(3, 4);
+			graph.AddEdge(4, 2);
+			graph.AddEdge(3, 5);
+			graph.AddEdge(6, 1);
+			graph.AddEdge(6, 5);
+
+			auto path = graph.DFS(0, 6);
+
+			Assert::AreEqual(size_t{ 0 }, path.Size());
+		}
+	};
+
 	TEST_CLASS(Exceptions)
 	{
 	public:
