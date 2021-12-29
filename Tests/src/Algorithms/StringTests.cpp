@@ -1,5 +1,6 @@
 #include "CppUnitTest.h"
 #include "StringAlgorithms.h"
+#include "Utilities.h"
 #include <string>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
