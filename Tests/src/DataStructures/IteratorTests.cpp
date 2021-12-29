@@ -26,6 +26,21 @@ namespace Iterators {
 			auto iter2 = iter + 1;
 			Assert::AreEqual(iter[0], iter2[-1]);
 		}
+		TEST_METHOD(NegativeIndex)
+		{
+			ds::List<int> list;
+
+			for (int i = 0; i < 10; i++)
+			{
+				list.Add(i);
+			}
+
+			auto iter = list.end();
+
+			Assert::AreEqual(9, iter[-1]);
+			Assert::AreEqual(5, iter[-5]);
+			Assert::AreEqual(7, iter[-3]);
+		}
 		TEST_METHOD(Comparison)
 		{
 			ds::List<int> list;
