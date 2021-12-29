@@ -3,6 +3,7 @@
 #include "Random.h"
 #include "Array.h"
 #include <stdexcept>
+#include <string>
 
 namespace util {
 	
@@ -20,6 +21,7 @@ namespace util {
 	void Swap(T& A, T& B);
 
 	size_t StringLength(const char*);
+	std::string ToString(const ds::Array<char>);
 	//-----
 	
 	template<typename T>
