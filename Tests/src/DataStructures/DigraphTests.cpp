@@ -160,6 +160,20 @@ namespace Digraph {
 
 			Assert::ExpectException<std::out_of_range>([&] { graph.AddEdge(1, 5); });
 		}
+
+		TEST_METHOD(SearchingNonExistentVertexThrows)
+		{
+			ds::Digraph graph(5);
+			graph.AddEdge(0, 1);
+			graph.AddEdge(1, 2);
+
+			Assert::ExpectException<std::out_of_range>([&] { graph.DFS(1, 10); });
+			Assert::ExpectException<std::out_of_range>([&] { graph.DFS(10, 2); });
+			Assert::ExpectException<std::out_of_range>([&] { graph.BFS(1, 10); });
+			Assert::ExpectException<std::out_of_range>([&] { graph.BFS(10, 2); });
+
+			Assert::ExpectException<std::out_of_range>([&] { graph.BFS(1, 5); });
+		}
 	};
 
 }

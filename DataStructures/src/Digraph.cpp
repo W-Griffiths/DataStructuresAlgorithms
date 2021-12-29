@@ -8,9 +8,11 @@ namespace ds {
 	Digraph::Digraph(const uint vertices) : edges(Array<List<uint>>(vertices)), numVertices(vertices), numEdges(0) { }
 
 	void Digraph::AddEdge(uint from, uint to) {
+		#ifdef _DEBUG
 		if (from >= numVertices || to >= numVertices) {
 			throw std::out_of_range("Vertex doesn't exist in the graph");
 		}
+		#endif _DEBUG
 
 		edges[from].Add(to);
 		numEdges++;
@@ -33,6 +35,12 @@ namespace ds {
 	/// connecting path between source and destination. 
 	/// Returns an empty array if no path exists.</returns>
 	Array<uint> Digraph::DFS(const uint source, const uint destination) const {
+		#ifdef _DEBUG
+		if (source >= numVertices || destination >= numVertices) {
+			throw std::out_of_range("Vertex doesn't exist in the graph");
+		}
+		#endif
+
 		Array<bool> marked(numVertices);
 		marked.SetAll(false);
 
@@ -85,6 +93,12 @@ namespace ds {
 	/// connecting path between source and destination. 
 	/// Returns an empty array if no path exists.</returns>
 	Array<uint> Digraph::BFS(const uint source, const uint destination) const {
+		#ifdef _DEBUG
+		if (source >= numVertices || destination >= numVertices) {
+			throw std::out_of_range("Vertex doesn't exist in the graph");
+		}
+		#endif
+
 		Array<bool> marked(numVertices);
 		marked.SetAll(false);
 
