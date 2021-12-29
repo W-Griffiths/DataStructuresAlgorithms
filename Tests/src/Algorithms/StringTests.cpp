@@ -1,5 +1,6 @@
 #include "CppUnitTest.h"
 #include "StringAlgorithms.h"
+#include "Array.h"
 #include "Utilities.h"
 #include <string>
 
@@ -129,4 +130,48 @@ namespace String {
 		}
 	};
 
+	TEST_CLASS(URLifySpaces)
+	{
+	public:
+
+		TEST_METHOD(ValidInputPasses)
+		{
+			ds::Array<char> path ("www.website.com/some page with spaces      ");
+			ds::Array<char> expectedPath ("www.website.com/some%20page%20with%20spaces");
+
+			alg::string::URLifySpaces(path);
+
+			Assert::AreEqual(util::ToString(expectedPath), util::ToString(path));
+		}
+
+		TEST_METHOD(InputWithNoSpacesIsUnmodified)
+		{
+			ds::Array<char> input("thisstringhasnospaces");
+			ds::Array<char> expectedOutput("thisstringhasnospaces");
+
+			alg::string::URLifySpaces(input);
+
+			Assert::AreEqual(util::ToString(expectedOutput), util::ToString(input));
+		}
+
+		TEST_METHOD(LeadingSpacesAlsoConvert)
+		{
+			ds::Array<char> input(" a string with leading spaces          ");
+			ds::Array<char> expectedOutput("%20a%20string%20with%20leading%20spaces");
+
+			alg::string::URLifySpaces(input);
+
+			Assert::AreEqual(util::ToString(expectedOutput), util::ToString(input));
+		}
+
+		TEST_METHOD(AllSpacesIsIgnored)
+		{
+			ds::Array<char> input("   ");
+			ds::Array<char> expectedOutput("   ");
+
+			alg::string::URLifySpaces(input);
+
+			Assert::AreEqual(util::ToString(expectedOutput), util::ToString(input));
+		}
+	};
 }
