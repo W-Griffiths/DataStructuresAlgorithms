@@ -64,7 +64,7 @@ namespace Stack {
 			Assert::AreEqual(size_t{ 4 }, stack.Size());
 			Assert::AreEqual(16, charles);
 
-			int valterri = stack.Pop();
+			int valtteri = stack.Pop();
 			int lewis = stack.Pop();
 			int sergio = stack.Pop();
 
