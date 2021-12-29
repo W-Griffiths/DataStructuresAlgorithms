@@ -10,7 +10,7 @@ namespace ds {
 	public:
 		Digraph(const uint vertices);
 		
-		void AddEdge(uint from, uint to);
+		virtual void AddEdge(uint from, uint to);
 
 		uint NumVertices() const;
 		uint NumEdges() const;
