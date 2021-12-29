@@ -173,6 +173,7 @@
     <ClCompile Include="src\Algorithms\UtilityTests.cpp" />
     <ClCompile Include="src\DataStructures\ArrayTests.cpp" />
     <ClCompile Include="src\DataStructures\DigraphTests.cpp" />
+    <ClCompile Include="src\DataStructures\DoubleLinkedListTests.cpp" />
     <ClCompile Include="src\DataStructures\IteratorTests.cpp" />
     <ClCompile Include="src\DataStructures\StackArrayTests.cpp" />
     <ClCompile Include="src\DataStructures\DictionaryTests.cpp" />

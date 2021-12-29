@@ -54,6 +54,9 @@
     <ClCompile Include="src\DataStructures\DigraphTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\DataStructures\DoubleLinkedListTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\DataStructures\Tracer.h">
