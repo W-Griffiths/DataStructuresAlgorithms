@@ -15,6 +15,8 @@ namespace ds {
 		uint NumVertices() const;
 		uint NumEdges() const;
 
+		bool PathExists(const uint source, const uint destination) const;
+
 		Array<uint> DFS(const uint source, const uint destination) const;
 		Array<uint> BFS(const uint source, const uint destination) const;
 

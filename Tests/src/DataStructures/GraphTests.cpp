@@ -156,6 +156,28 @@ namespace Graph {
 
 			Assert::AreEqual(size_t{ 0 }, path.Size());
 		}
+
+		TEST_METHOD(PathExists)
+		{
+			ds::Graph graph(10);
+			graph.AddEdge(0, 2);
+			graph.AddEdge(0, 5);
+			graph.AddEdge(2, 1);
+			graph.AddEdge(1, 0);
+			graph.AddEdge(2, 3);
+			graph.AddEdge(3, 4);
+			graph.AddEdge(4, 2);
+			graph.AddEdge(3, 5);
+			graph.AddEdge(6, 1);
+			graph.AddEdge(6, 5);
+
+			graph.AddEdge(7, 8);
+			graph.AddEdge(8, 9);
+			graph.AddEdge(9, 7);
+
+			Assert::IsTrue(graph.PathExists(0, 6));
+			Assert::IsFalse(graph.PathExists(0, 7));
+		}
 	};
 
 	TEST_CLASS(Exceptions)

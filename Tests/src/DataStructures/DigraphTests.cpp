@@ -144,6 +144,24 @@ namespace Digraph {
 
 			Assert::AreEqual(size_t{ 0 }, path.Size());
 		}
+
+		TEST_METHOD(PathExists)
+		{
+			ds::Digraph graph(7);
+			graph.AddEdge(0, 2);
+			graph.AddEdge(0, 5);
+			graph.AddEdge(2, 1);
+			graph.AddEdge(1, 0);
+			graph.AddEdge(2, 3);
+			graph.AddEdge(3, 4);
+			graph.AddEdge(4, 2);
+			graph.AddEdge(3, 5);
+			graph.AddEdge(6, 1);
+			graph.AddEdge(6, 5);
+
+			Assert::IsTrue(graph.PathExists(0, 5));
+			Assert::IsFalse(graph.PathExists(0, 6));
+		}
 	};
 
 	TEST_CLASS(Exceptions)
@@ -173,6 +191,18 @@ namespace Digraph {
 			Assert::ExpectException<std::out_of_range>([&] { graph.BFS(10, 2); });
 
 			Assert::ExpectException<std::out_of_range>([&] { graph.BFS(1, 5); });
+		}
+
+		TEST_METHOD(CheckingPathForNonExistentVertexThrows)
+		{
+			ds::Digraph graph(5);
+			graph.AddEdge(0, 1);
+			graph.AddEdge(1, 2);
+
+			Assert::ExpectException<std::out_of_range>([&] { graph.PathExists(1, 10); });
+			Assert::ExpectException<std::out_of_range>([&] { graph.PathExists(10, 2); });
+
+			Assert::ExpectException<std::out_of_range>([&] { graph.PathExists(1, 5); });
 		}
 	};
 

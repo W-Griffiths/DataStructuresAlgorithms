@@ -26,6 +26,18 @@ namespace ds {
 		return numEdges;
 	}
 
+	bool Digraph::PathExists(const uint source, const uint destination) const {
+		#ifdef _DEBUG
+		if (source >= numVertices || destination >= numVertices) {
+			throw std::out_of_range("Vertex doesn't exist in the graph");
+		}
+		#endif
+		
+		auto result = DFS(source, destination);
+
+		return !result.IsEmpty();
+	}
+
 	/// <summary>
 	/// A Depth-First Search which exhausts a path before backtracking.
 	/// </summary>
