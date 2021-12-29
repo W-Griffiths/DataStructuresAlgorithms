@@ -1,8 +1,8 @@
 #pragma once
-#include <stdexcept>
 #include "Iterators/RandomAccessIterator.h"
 #include "Random.h"
 #include "Array.h"
+#include <stdexcept>
 
 namespace util {
 	
