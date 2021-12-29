@@ -169,6 +169,8 @@ namespace Graph {
 
 			Assert::ExpectException<std::out_of_range>([&] { graph.AddEdge(1, 10); });
 			Assert::ExpectException<std::out_of_range>([&] { graph.AddEdge(10, 2); });
+
+			Assert::ExpectException<std::out_of_range>([&] { graph.AddEdge(0, 5); });
 		}
 	};
 
