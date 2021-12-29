@@ -45,6 +45,9 @@
     <ClInclude Include="src\Digraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Queue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="src\DoubleLinkedList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
