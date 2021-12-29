@@ -16,6 +16,7 @@ namespace ds {
 		uint NumEdges() const;
 
 		Array<uint> DFS(const uint source, const uint destination) const;
+		Array<uint> BFS(const uint source, const uint destination) const;
 
 	protected:
 		const uint numVertices;
