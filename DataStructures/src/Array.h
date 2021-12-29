@@ -52,6 +52,10 @@ namespace ds {
 			return size;
 		}
 
+		constexpr bool IsEmpty() const {
+			return Size() == 0;
+		}
+
 		bool operator==(const Array& other) const {
 			if (Size() != other.Size()) {
 				return false;
