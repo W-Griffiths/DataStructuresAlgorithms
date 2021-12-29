@@ -3,13 +3,12 @@
 
 namespace util {
 
-	size_t StringLength(const char* stringPtr) {
-		size_t length = 0;
-		while (*stringPtr != '\0') {
-			++length;
-			++stringPtr;
+	size_t CStringLength(const char* CString) {
+		size_t i = 0;
+		while (CString[i] != '\0') {
+			++i;
 		}
-		return length;
+		return i;
 	}
 
 	std::string ToString(const ds::Array<char> input) {
