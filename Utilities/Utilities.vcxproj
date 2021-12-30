@@ -20,9 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\MyMath.h" />
+    <ClInclude Include="src\StringUtilities.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\MyMath.cpp" />
+    <ClCompile Include="src\StringUtilities.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

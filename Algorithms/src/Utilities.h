@@ -23,7 +23,6 @@ namespace util {
 	template<typename T>
 	void ShiftElements(RAI<T> begin, RAI<T> end, const ptrdiff_t amount);
 
-	size_t CStringLength(const char*);
 	std::string ToString(const ds::Array<char>);
 	//-----
 	

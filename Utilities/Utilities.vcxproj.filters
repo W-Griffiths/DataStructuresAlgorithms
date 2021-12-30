@@ -18,9 +18,15 @@
     <ClInclude Include="src\MyMath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\StringUtilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\MyMath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StringUtilities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
