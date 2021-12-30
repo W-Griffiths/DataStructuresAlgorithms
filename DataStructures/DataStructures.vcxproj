@@ -147,6 +147,7 @@
     <ClInclude Include="src\DoubleLinkedList.h" />
     <ClInclude Include="src\Graph.h" />
     <ClInclude Include="src\Iterators\RandomAccessIterator.h" />
+    <ClInclude Include="src\MyString.h" />
     <ClInclude Include="src\Queue.h" />
     <ClInclude Include="src\Stack.h" />
     <ClInclude Include="src\StackArray.h" />
@@ -160,6 +161,7 @@
   <ItemGroup>
     <ClCompile Include="src\Digraph.cpp" />
     <ClCompile Include="src\Graph.cpp" />
+    <ClCompile Include="src\MyString.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
