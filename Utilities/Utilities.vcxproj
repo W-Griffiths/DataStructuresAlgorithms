@@ -20,10 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\MyMath.h" />
+    <ClInclude Include="src\Random.h" />
     <ClInclude Include="src\StringUtilities.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\MyMath.cpp" />
+    <ClCompile Include="src\Random.cpp" />
     <ClCompile Include="src\StringUtilities.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
