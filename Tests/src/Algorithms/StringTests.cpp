@@ -1,7 +1,6 @@
 #include "CppUnitTest.h"
 #include "StringAlgorithms.h"
 #include "Array.h"
-#include "Utilities.h"
 #include <string>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -141,7 +140,7 @@ namespace String {
 
 			alg::string::URLifySpaces(path);
 
-			Assert::AreEqual(util::ToString(expectedPath), util::ToString(path));
+			Assert::AreEqual(alg::string::ToString(expectedPath), alg::string::ToString(path));
 		}
 
 		TEST_METHOD(InputWithNoSpacesIsUnmodified)
@@ -151,7 +150,7 @@ namespace String {
 
 			alg::string::URLifySpaces(input);
 
-			Assert::AreEqual(util::ToString(expectedOutput), util::ToString(input));
+			Assert::AreEqual(alg::string::ToString(expectedOutput), alg::string::ToString(input));
 		}
 
 		TEST_METHOD(LeadingSpacesAlsoConvert)
@@ -161,7 +160,7 @@ namespace String {
 
 			alg::string::URLifySpaces(input);
 
-			Assert::AreEqual(util::ToString(expectedOutput), util::ToString(input));
+			Assert::AreEqual(alg::string::ToString(expectedOutput), alg::string::ToString(input));
 		}
 
 		TEST_METHOD(AllSpacesIsIgnored)
@@ -171,7 +170,7 @@ namespace String {
 
 			alg::string::URLifySpaces(input);
 
-			Assert::AreEqual(util::ToString(expectedOutput), util::ToString(input));
+			Assert::AreEqual(alg::string::ToString(expectedOutput), alg::string::ToString(input));
 		}
 	};
 }

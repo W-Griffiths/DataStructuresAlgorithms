@@ -4,9 +4,18 @@
 #include "Array.h"
 #include "Sort.h"
 #include "CollectionAlgorithms.h"
+#include <sstream>
 
 namespace alg {
 	namespace string {
+		std::string ToString(const ds::Array<char> input) {
+			std::stringstream ss;
+			for (size_t i = 0; i < input.Size(); i++) {
+				ss << input[i];
+			}
+			return ss.str();
+		}
+
 		bool IsUniqueASCII(const std::string& input) {
 			const int AsciiSize = 127;
 

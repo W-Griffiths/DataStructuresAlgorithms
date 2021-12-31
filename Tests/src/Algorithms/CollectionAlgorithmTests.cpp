@@ -1,7 +1,7 @@
 #include "CppUnitTest.h"
 #include "CollectionAlgorithms.h"
 #include "Array.h"
-#include "Utilities.h"
+#include "StringAlgorithms.h"
 #include <string>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -18,13 +18,13 @@ namespace CollectionAlgorithms {
 
 			alg::ShiftElements(array.begin(), array.begin() + 3, 3);
 
-			Assert::AreEqual(std::string{ "dogdog" }, util::ToString(array));
+			Assert::AreEqual(std::string{ "dogdog" }, alg::string::ToString(array));
 
 			ds::Array<char> array2("It's raining cats");
 
 			alg::ShiftElements(array2.begin() + 13, array2.end(), -8);
 
-			Assert::AreEqual(std::string{ "It's catsing cats" }, util::ToString(array2));
+			Assert::AreEqual(std::string{ "It's catsing cats" }, alg::string::ToString(array2));
 		}
 
 		TEST_METHOD(ShiftOverlap)
@@ -33,13 +33,13 @@ namespace CollectionAlgorithms {
 
 			alg::ShiftElements(array.begin(), array.begin() + 3, 2);
 
-			Assert::AreEqual(std::string{ "dodog" }, util::ToString(array));
+			Assert::AreEqual(std::string{ "dodog" }, alg::string::ToString(array));
 
 			ds::Array<char> array2("Kimi Raikonnen");
 
 			alg::ShiftElements(array2.begin() + 5, array2.end(), -4);
 
-			Assert::AreEqual(std::string{ "KRaikonnennnen" }, util::ToString(array2));
+			Assert::AreEqual(std::string{ "KRaikonnennnen" }, alg::string::ToString(array2));
 		}
 
 		TEST_METHOD(ShiftingBy0DoesNothing)
@@ -48,7 +48,7 @@ namespace CollectionAlgorithms {
 
 			alg::ShiftElements(array.begin(), array.begin() + 5, 0);
 
-			Assert::AreEqual(std::string{ "Du Bist Weltmeister!" }, util::ToString(array));
+			Assert::AreEqual(std::string{ "Du Bist Weltmeister!" }, alg::string::ToString(array));
 		}
 
 		TEST_METHOD(ShiftingEmptySequenceDoesNothing)
@@ -57,7 +57,7 @@ namespace CollectionAlgorithms {
 
 			alg::ShiftElements(array.begin() + 5, array.begin() + 5, 0);
 
-			Assert::AreEqual(std::string{ "Thirty years ago..." }, util::ToString(array));
+			Assert::AreEqual(std::string{ "Thirty years ago..." }, alg::string::ToString(array));
 		}
 
 	};
