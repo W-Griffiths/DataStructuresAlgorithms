@@ -25,6 +25,10 @@ namespace ds {
 		//--- C-String Comparisons
 		bool operator==(const char*) const;
 		bool operator!=(const char*) const;
+		bool operator<(const char*) const;
+		bool operator>(const char*) const;
+		bool operator<=(const char*) const;
+		bool operator>=(const char*) const;
 
 	private:
 		const size_t length;

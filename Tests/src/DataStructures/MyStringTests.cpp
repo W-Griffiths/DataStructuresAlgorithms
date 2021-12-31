@@ -213,22 +213,91 @@ namespace MyString {
 			Assert::IsTrue(string1 >= string2);
 		}
 	};
+
 	TEST_CLASS(CStringComparison)
 	{
 	public:
-		TEST_METHOD(EqualsLiteral)
+		TEST_METHOD(SameStringsAreEqual)
 		{
 			const ds::String string("Miss Belle");
-			Assert::IsTrue(string == "Miss Belle");
-			Assert::IsTrue(string == "Miss Belle");
+			Assert::IsTrue (string == "Miss Belle");
+			Assert::IsFalse(string != "Miss Belle");
 		}
-		TEST_METHOD(NotEqualLiteral)
+		TEST_METHOD(DifferentStringAreNotEqual)
 		{
 			const ds::String string("Miss Belle");
-			Assert::IsTrue(string != "Miss Daisy");
-			Assert::IsTrue(string != "Miss Bell");
+
+			Assert::IsTrue(string != "MissBelle");
 			Assert::IsTrue(string != "Miss Belle ");
 			Assert::IsTrue(string != " Miss Belle");
+			Assert::IsTrue(string != "Miss Daisy");
+			Assert::IsTrue(string != "Miss Bel");
+
+			Assert::IsFalse(string == "MissBelle");
+			Assert::IsFalse(string == "Miss Belle ");
+			Assert::IsFalse(string == " Miss Belle");
+			Assert::IsFalse(string == "Miss Daisy");
+			Assert::IsFalse(string == "Miss Bel");
+		}
+		TEST_METHOD(LessThan)
+		{
+			const ds::String string("Ursa Major");
+
+			Assert::IsTrue(string < "Ursa Minor");
+		}
+		TEST_METHOD(GreaterThan)
+		{
+			const ds::String string("Ursa Minor");
+
+			Assert::IsTrue(string > "Ursa Major");
+		}
+		TEST_METHOD(ShorterStringsAreLessThan)
+		{
+			const ds::String string("aqua");
+
+			Assert::IsTrue(string < "aquamarine");
+		}
+		TEST_METHOD(LongerStringsAreGreaterThan)
+		{
+			const ds::String string("aquamarine");
+
+			Assert::IsTrue(string > "aqua");
+		}
+		TEST_METHOD(UpperCaseIsLess)
+		{
+			const ds::String string("Ursa Minor");
+
+			Assert::IsTrue(string < "ursa Major");
+		}
+		TEST_METHOD(LowerCaseIsGreater)
+		{
+			const ds::String string("ursa Major");
+
+			Assert::IsTrue(string > "Ursa Minor");
+		}
+		TEST_METHOD(EqualStringsAreNotLessThan)
+		{
+			const ds::String string("Ursa Minor");
+
+			Assert::IsFalse(string < "Ursa Minor");
+		}
+		TEST_METHOD(EqualStringsAreLessThanOrEqual)
+		{
+			const ds::String string("Ursa Minor");
+
+			Assert::IsTrue(string <= "Ursa Minor");
+		}
+		TEST_METHOD(EqualStringsAreNotGreaterThan)
+		{
+			const ds::String string("Ursa Major");
+
+			Assert::IsFalse(string > "Ursa Major");
+		}
+		TEST_METHOD(EqualStringsAreGreaterThanOrEqual)
+		{
+			const ds::String string("Ursa Major");
+
+			Assert::IsTrue(string >= "Ursa Major");
 		}
 	};
 

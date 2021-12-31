@@ -138,4 +138,62 @@ namespace ds {
 		return !operator==(cString);
 	}
 
+	bool String::operator<(const char* cString) const {
+		size_t otherLength = CStringLength(cString);
+		size_t len = Min(length, otherLength);
+		for (size_t i = 0; i < len; i++) {
+			if (array[i] == cString[i]) {
+				continue;
+			}
+			else {
+				if (array[i] < cString[i]) {
+					return true;
+				}
+				else {
+					return false;
+				}
+			}
+		}
+		// Strings are equal at this point
+		if (length < otherLength) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	bool String::operator>(const char* cString) const {
+		size_t otherLength = CStringLength(cString);
+		size_t len = Min(length, otherLength);
+		for (size_t i = 0; i < len; i++) {
+			if (array[i] == cString[i]) {
+				continue;
+			}
+			else {
+				if (array[i] > cString[i]) {
+					return true;
+				}
+				else {
+					return false;
+				}
+			}
+		}
+		// Strings are equal at this point
+		if (length > otherLength) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	bool String::operator<=(const char* cString) const {
+		return !operator>(cString);
+	}
+
+	bool String::operator>=(const char* cString) const {
+		return !operator<(cString);
+	}
+
 }
