@@ -50,6 +50,43 @@ namespace ds {
 		return array[index];
 	}
 
+	String String::Append(const String& other) const {
+		String newString(length + other.length);
+
+		size_t i = 0;
+		// Copy first string over
+		for (size_t j = 0; j < length; j++) {
+			newString.array[i] = array[j];
+			i++;
+		}
+		// Copy second string over
+		for (size_t j = 0; j < other.length; j++) {
+			newString.array[i] = other.array[j];
+			i++;
+		}
+
+		return newString;
+	}
+
+	String String::Append(const char* cString) const {
+		const size_t cStrLen = CStringLength(cString);
+		String newString(length + cStrLen);
+
+		size_t i = 0;
+		// Copy first string over
+		for (size_t j = 0; j < length; j++) {
+			newString.array[i] = array[j];
+			i++;
+		}
+		// Copy second string over
+		for (size_t j = 0; j < cStrLen; j++) {
+			newString.array[i] = cString[j];
+			i++;
+		}
+
+		return newString;
+	}
+
 	bool String::operator==(const String& other) const {
 		if (length != other.length) {
 			return false;
@@ -201,5 +238,7 @@ namespace ds {
 	bool String::operator>=(const char* cString) const {
 		return !operator<(cString);
 	}
+
+	String::String(const size_t length) : length(length), array(std::make_unique<char[]>(length)) { }
 
 }

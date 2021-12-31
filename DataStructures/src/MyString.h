@@ -16,6 +16,9 @@ namespace ds {
 		char& operator[](const size_t);
 		char operator[](const size_t) const;
 
+		String Append(const String&) const;
+		String Append(const char*) const;
+
 		//--- String comparisons
 		bool operator==(const String&) const;
 		bool operator!=(const String&) const;
@@ -35,5 +38,7 @@ namespace ds {
 	private:
 		const size_t length;
 		const std::unique_ptr<char[]> array;
+
+		String(const size_t);
 	};
 }

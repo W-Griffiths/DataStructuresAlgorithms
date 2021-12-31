@@ -105,6 +105,50 @@ namespace String {
 		}
 	};
 
+	TEST_CLASS(Append)
+	{
+	public:
+		TEST_METHOD(AppendingStrings)
+		{
+			const ds::String string("Daisy");
+			const ds::String string2(", Daisy");
+			const ds::String string3(", give me your answer do.");
+
+			const ds::String result1 = string.Append(string2);
+			Assert::AreEqual({"Daisy, Daisy"}, result1);
+			Assert::AreEqual({"Daisy"}, string);
+			
+			const ds::String result2 = result1.Append(string3);
+			Assert::AreEqual({ "Daisy, Daisy, give me your answer do." }, result2);
+		}
+		TEST_METHOD(AppendingCStrings)
+		{
+			const ds::String string("Daisy");
+
+			const ds::String result1 = string.Append(", Daisy");
+			Assert::AreEqual({ "Daisy, Daisy" }, result1);
+			Assert::AreEqual({ "Daisy" }, string);
+
+			const ds::String result2 = result1.Append(", give me your answer do.");
+			Assert::AreEqual({ "Daisy, Daisy, give me your answer do." }, result2);
+		}
+		TEST_METHOD(AppendEmptyString)
+		{
+			const ds::String string("Hornet");
+			const ds::String string2("");
+
+			const ds::String result1 = string.Append(string2);
+			Assert::AreEqual({ "Hornet" }, result1);
+		}
+		TEST_METHOD(AppendEmptyCString)
+		{
+			const ds::String string("Hornet");
+
+			const ds::String result1 = string.Append("");
+			Assert::AreEqual({ "Hornet" }, result1);
+		}
+	};
+
 	TEST_CLASS(StringComparison)
 	{
 	public:
