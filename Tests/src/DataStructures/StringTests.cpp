@@ -25,6 +25,9 @@ namespace String {
 			ds::String string("");
 			Assert::IsTrue(string.IsEmpty());
 			Assert::AreEqual(size_t{ 0 }, string.Length());
+
+			Assert::IsTrue(string == "");
+			Assert::AreEqual({ "" }, string);
 		}
 
 		TEST_METHOD(ConstructWithLiteral)
