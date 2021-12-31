@@ -3,7 +3,7 @@
 #include "HashSet.h"
 #include "Array.h"
 #include "Sort.h"
-#include "Utilities.h"
+#include "CollectionAlgorithms.h"
 
 namespace alg {
 	namespace string {
@@ -83,7 +83,7 @@ namespace alg {
 			int stringLength = 0;
 			while (i >= 0) {
 				if (input[i] == ' ') {
-					util::ShiftElements(input.begin() + i + 1, input.begin() + i + 1 + stringLength, padding);
+					alg::ShiftElements(input.begin() + i + 1, input.begin() + i + 1 + stringLength, padding);
 					padding -= 2;
 					input[i+padding] = '%';
 					input[i+padding+1] = '2';
