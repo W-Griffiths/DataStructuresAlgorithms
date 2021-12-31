@@ -15,7 +15,7 @@ namespace Microsoft::VisualStudio::CppUnitTestFramework {
 	}
 }
 
-namespace MyString {
+namespace String {
 
 	TEST_CLASS(Construction)
 	{

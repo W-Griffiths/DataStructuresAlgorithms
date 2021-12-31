@@ -21,7 +21,7 @@
     <ClCompile Include="src\DataStructures\StackArrayTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Algorithms\StringTests.cpp">
+    <ClCompile Include="src\Algorithms\StringAlgorithmTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\DataStructures\LinkedListTests.cpp">
@@ -63,7 +63,7 @@
     <ClCompile Include="src\DataStructures\GraphTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\DataStructures\MyStringTests.cpp">
+    <ClCompile Include="src\DataStructures\StringTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Algorithms\CollectionAlgorithmTests.cpp">

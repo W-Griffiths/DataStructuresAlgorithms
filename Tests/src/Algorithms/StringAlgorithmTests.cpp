@@ -5,7 +5,7 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-namespace String {
+namespace StringAlgorithms {
 
 	TEST_CLASS(UniqueASCII)
 	{
