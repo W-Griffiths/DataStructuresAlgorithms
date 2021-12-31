@@ -23,8 +23,5 @@ namespace ds {
 	private:
 		const size_t length;
 		const std::unique_ptr<char[]> array;
-
-	public:
-		static size_t CStringLength(const char*);
 	};
 }

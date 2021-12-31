@@ -1,4 +1,5 @@
 #include "MyString.h"
+#include "StringUtilities.h"
 #include <stdexcept>
 
 namespace ds {
@@ -78,11 +79,4 @@ namespace ds {
 		return !operator==(cString);
 	}
 
-	size_t String::CStringLength(const char* cString) {
-		size_t len = 0;
-		while (cString[len] != '\0') {
-			len++;
-		}
-		return len;
-	}
 }
