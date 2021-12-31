@@ -1,6 +1,5 @@
 #include "CppUnitTest.h"
 #include "Sort.h"
-#include "Utilities.h"
 #include "Array.h"
 #include "List.h"
 #include <string>

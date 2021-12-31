@@ -1,8 +1,7 @@
 #include "CppUnitTest.h"
-#include "Array.h"
-#include "List.h"
 #include "Random.h"
 #include "Utilities.h"
+#include "Array.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -47,8 +46,7 @@ namespace Utility {
 
 	};
 
-
-	TEST_CLASS(Swap)
+	TEST_CLASS(SwapElements)
 	{
 	public:
 
@@ -64,13 +62,13 @@ namespace Utility {
 			Assert::AreEqual('B', array[1]);
 			Assert::AreEqual('C', array[2]);
 
-			util::Swap(array[0], array[2]);
+			Swap(array[0], array[2]);
 
 			Assert::AreEqual('C', array[0]);
 			Assert::AreEqual('B', array[1]);
 			Assert::AreEqual('A', array[2]);
 
-			util::Swap(array[2], array[1]);
+			Swap(array[2], array[1]);
 
 			Assert::AreEqual('C', array[0]);
 			Assert::AreEqual('A', array[1]);

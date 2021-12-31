@@ -158,11 +158,9 @@
     <ClInclude Include="src\CollectionAlgorithms.h" />
     <ClInclude Include="src\Sort.h" />
     <ClInclude Include="src\StringAlgorithms.h" />
-    <ClInclude Include="src\Utilities.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\StringAlgorithms.cpp" />
-    <ClCompile Include="src\Utilities.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -21,6 +21,9 @@
     <ClInclude Include="src\StringUtilities.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Utilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="src\Random.h">
       <Filter>Header Files</Filter>
     </ClInclude>

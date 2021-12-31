@@ -69,10 +69,10 @@ namespace alg {
 					if (right == left) break;
 				}
 				if (left >= right) break;
-				util::Swap(*left, *right);
+				Swap(*left, *right);
 			}
 			--left;
-			util::Swap(*pivot, *left);
+			Swap(*pivot, *left);
 			return left;
 		}
 

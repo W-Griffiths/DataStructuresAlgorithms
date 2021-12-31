@@ -45,7 +45,7 @@
     <ClCompile Include="src\DataStructures\IteratorTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Algorithms\UtilityTests.cpp">
+    <ClCompile Include="src\Utilities\UtilityTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\DataStructures\StackTests.cpp">
