@@ -8,6 +8,8 @@ namespace ds {
 		String(const char*);
 		String(const Array<char>&);
 
+		String(const String& other);
+
 		size_t Length() const;
 		bool IsEmpty() const;
 

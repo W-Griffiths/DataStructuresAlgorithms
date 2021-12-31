@@ -46,6 +46,25 @@ namespace String {
 			Assert::IsTrue(string == "Daisy");
 			Assert::AreEqual(size_t{ 5 }, string.Length());
 		}
+
+		TEST_METHOD(CopyConstruct)
+		{
+			ds::String red16("Leclerc");
+			ds::String fast(red16);
+
+			Assert::AreEqual(red16, fast);
+			Assert::AreEqual({ "Leclerc" }, red16);
+			Assert::AreEqual({ "Leclerc" }, fast);
+			Assert::IsTrue(fast == "Leclerc");
+
+			red16[2] = 'g';
+			red16[6] = 'g';
+
+			Assert::AreNotEqual(red16, fast);
+			Assert::AreEqual({ "Leglerg" }, red16);
+			Assert::AreEqual({ "Leclerc" }, fast);
+			Assert::IsTrue(fast == "Leclerc");
+		}
 	};
 
 	TEST_CLASS(Indexer)

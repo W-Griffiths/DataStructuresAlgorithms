@@ -16,6 +16,12 @@ namespace ds {
 		}
 	}
 
+	String::String(const String& other) : length(other.length), array(std::make_unique<char[]>(length)) {
+		for (size_t i = 0; i < length; i++) {
+			array[i] = other.array[i];
+		}
+	}
+
 	size_t String::Length() const {
 		return length;
 	}
