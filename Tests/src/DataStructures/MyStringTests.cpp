@@ -86,32 +86,136 @@ namespace MyString {
 		}
 	};
 
-	TEST_CLASS(Comparison)
+	TEST_CLASS(StringComparison)
 	{
 	public:
-		TEST_METHOD(Equals)
+		TEST_METHOD(SameStringsAreEqual)
 		{
 			const ds::String string("Miss Belle");
 			const ds::String stringTwo("Miss Belle");
 			Assert::AreEqual(string, stringTwo);
 			Assert::IsTrue(string == stringTwo);
+			Assert::IsFalse(string != stringTwo);
 		}
-		TEST_METHOD(NotEqual)
+		TEST_METHOD(DifferentStringAreNotEqual)
 		{
 			const ds::String string("Miss Belle");
 			const ds::String badString1("MissBelle");
 			const ds::String badString2("Miss Belle ");
 			const ds::String badString3(" Miss Belle");
 			const ds::String badString4("Miss Daisy");
+			const ds::String badString5("Miss B");
 			Assert::AreNotEqual(string, badString1);
 			Assert::AreNotEqual(string, badString2);
 			Assert::AreNotEqual(string, badString3);
 			Assert::AreNotEqual(string, badString4);
+			Assert::AreNotEqual(string, badString5);
+
 			Assert::IsTrue(string != badString1);
 			Assert::IsTrue(string != badString2);
 			Assert::IsTrue(string != badString3);
 			Assert::IsTrue(string != badString4);
+			Assert::IsTrue(string != badString5);
+
+			Assert::IsTrue(badString1 != string);
+			Assert::IsTrue(badString2 != string);
+			Assert::IsTrue(badString3 != string);
+			Assert::IsTrue(badString4 != string);
+			Assert::IsTrue(badString5 != string);
+
+			Assert::IsFalse(string == badString1);
+			Assert::IsFalse(string == badString2);
+			Assert::IsFalse(string == badString3);
+			Assert::IsFalse(string == badString4);
+			Assert::IsFalse(string == badString5);
+
+			Assert::IsFalse(badString1 == string);
+			Assert::IsFalse(badString2 == string);
+			Assert::IsFalse(badString3 == string);
+			Assert::IsFalse(badString4 == string);
+			Assert::IsFalse(badString5 == string);
 		}
+		TEST_METHOD(LessThan)
+		{
+			const ds::String string1("Ursa Major");
+			const ds::String string2("Ursa Minor");
+
+			Assert::IsTrue(string1 < string2);
+			Assert::IsFalse(string2 < string1);
+		}
+		TEST_METHOD(GreaterThan)
+		{
+			const ds::String string1("Ursa Minor");
+			const ds::String string2("Ursa Major");
+
+			Assert::IsTrue(string1 > string2);
+			Assert::IsFalse(string2 > string1);
+		}
+		TEST_METHOD(ShorterStringsAreLessThan)
+		{
+			const ds::String string1("aqua");
+			const ds::String string2("aquamarine");
+
+			Assert::IsTrue(string1 < string2);
+			Assert::IsFalse(string2 < string1);
+		}
+		TEST_METHOD(LongerStringsAreGreaterThan)
+		{
+			const ds::String string1("aquamarine");
+			const ds::String string2("aqua");
+
+			Assert::IsTrue(string1 > string2);
+			Assert::IsFalse(string2 > string1);
+		}
+		TEST_METHOD(UpperCaseIsLess)
+		{
+			const ds::String string1("Ursa Minor");
+			const ds::String string2("ursa Major");
+
+			Assert::IsTrue(string1 < string2);
+			Assert::IsFalse(string2 < string1);
+		}
+		TEST_METHOD(LowerCaseIsGreater)
+		{
+			const ds::String string1("ursa Major");
+			const ds::String string2("Ursa Minor");
+
+			Assert::IsTrue(string1 > string2);
+			Assert::IsFalse(string2 > string1);
+		}
+		TEST_METHOD(EqualStringsAreNotLessThan)
+		{
+			const ds::String string1("Ursa Minor");
+			const ds::String string2("Ursa Minor");
+			
+			Assert::IsFalse(string1 < string2);
+		}
+		TEST_METHOD(EqualStringsAreLessThanOrEqual)
+		{
+			const ds::String string1("Ursa Minor");
+			const ds::String string2("Ursa Minor");
+
+			Assert::IsTrue(string1 <= string2);
+			Assert::IsTrue(string2 <= string1);
+		}
+		TEST_METHOD(EqualStringsAreNotGreaterThan)
+		{
+			const ds::String string1("Ursa Major");
+			const ds::String string2("Ursa Major");
+
+			Assert::IsFalse(string1 > string2);
+		}
+		TEST_METHOD(EqualStringsAreGreaterThanOrEqual)
+		{
+			const ds::String string1("Ursa Major");
+			const ds::String string2("Ursa Major");
+
+			Assert::IsTrue(string1 >= string2);
+		}
+	};
+	TEST_CLASS(CStringComparison)
+	{
+	public:
 		TEST_METHOD(EqualsLiteral)
 		{
 			const ds::String string("Miss Belle");

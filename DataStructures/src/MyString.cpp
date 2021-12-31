@@ -1,4 +1,5 @@
 #include "MyString.h"
+#include "MyMath.h"
 #include "StringUtilities.h"
 #include <stdexcept>
 
@@ -59,6 +60,64 @@ namespace ds {
 
 	bool String::operator!=(const String& other) const {
 		return !operator==(other);
+	}
+
+	bool String::operator<(const String& other) const {
+		// Use shortest length so we don't overflow
+		size_t len = Min(length, other.length);
+		for (size_t i = 0; i < len; i++) {
+			if (array[i] == other.array[i]) {
+				continue;
+			}
+			else {
+				if (array[i] < other.array[i]) {
+					return true;
+				}
+				else {
+					return false;
+				}
+			}
+		}
+		// Strings are equal at this point
+		if (length < other.length) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	bool String::operator>(const String& other) const {
+		// Use shortest length so we don't overflow
+		size_t len = Min(length, other.length);
+		for (size_t i = 0; i < len; i++) {
+			if (array[i] == other.array[i]) {
+				continue;
+			}
+			else {
+				if (array[i] > other.array[i]) {
+					return true;
+				}
+				else {
+					return false;
+				}
+			}
+		}
+		// Strings are equal at this point
+		if (length > other.length) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	bool String::operator<=(const String& other) const {
+		return !operator>(other);
+	}
+
+	bool String::operator>=(const String& other) const {
+		return !operator<(other);
 	}
 	
 	bool String::operator==(const char* cString) const {
