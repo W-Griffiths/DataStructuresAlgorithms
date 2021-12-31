@@ -40,5 +40,8 @@ namespace ds {
 		const std::unique_ptr<char[]> array;
 
 		String(const size_t);
+
+	public:
+		static String Empty();
 	};
 }

@@ -241,4 +241,8 @@ namespace ds {
 
 	String::String(const size_t length) : length(length), array(std::make_unique<char[]>(length)) { }
 
+	String String::Empty() {
+		return String( size_t{0} );
+	}
+
 }

@@ -367,4 +367,17 @@ namespace String {
 		}
 	};
 
+	TEST_CLASS(EmptyString)
+	{
+	public:
+		TEST_METHOD(EmptyStringIsEmpty)
+		{
+			const ds::String string = ds::String::Empty();
+
+			Assert::IsTrue(string.IsEmpty());
+			Assert::AreEqual({ "" }, string);
+			Assert::IsTrue(string == "");
+		}
+	};
+
 }
