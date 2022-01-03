@@ -73,12 +73,6 @@ namespace alg {
 			return arrayA == arrayB;
 		}
 
-		/// <summary>
-		/// Modifies a char array in place to replace spaces with
-		/// the %20 URL symbol.
-		/// This algorithm assumes the input has enough trailing
-		/// spaces to perform the operation correctly.
-		/// </summary>
 		void URLifySpaces(ds::Array<char>& input) {
 			if (input.IsEmpty()) return;
 
