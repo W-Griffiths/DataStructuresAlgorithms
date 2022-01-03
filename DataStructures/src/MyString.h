@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include "Array.h"
+#include "Iterators/RandomAccessIterator.h"
 
 namespace ds {
 	class String final {
@@ -57,5 +58,15 @@ namespace ds {
 
 	public:
 		static String Empty();
+
+	public:
+		using Iterator = RandomAccessIterator<char>;
+
+		Iterator begin() const {
+			return Iterator(array.get());
+		}
+		Iterator end() const {
+			return Iterator(array.get() + length);
+		}
 	};
 }

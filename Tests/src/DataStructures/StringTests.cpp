@@ -518,4 +518,33 @@ namespace String {
 		}
 	};
 
+	TEST_CLASS(Iterator)
+	{
+	public:
+		TEST_METHOD(ForEachLoop)
+		{
+			const ds::String string("Millibelle the Banker");
+
+			int numVowels = 0;
+			for (auto c : string) {
+				if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+					numVowels++;
+				}
+			}
+
+			Assert::AreEqual(7, numVowels);
+		}
+		TEST_METHOD(ForEachLoopWithEmptyString)
+		{
+			const ds::String string = ds::String::Empty();
+
+			int numLetters = 0;
+			for (auto c : string) {
+				numLetters++;
+			}
+
+			Assert::AreEqual(0, numLetters);
+		}
+	};
+
 }
