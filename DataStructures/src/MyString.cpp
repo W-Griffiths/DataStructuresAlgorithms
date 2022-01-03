@@ -127,6 +127,10 @@ namespace ds {
 	}
 
 	bool String::IsAlphabetic() const {
+		if (IsEmptyOrWhitespace()) {
+			return false;
+		}
+
 		for (size_t i = 0; i < length; i++) {
 			if (!::IsAlphabetic(array[i])) {
 				return false;
@@ -136,6 +140,10 @@ namespace ds {
 	}
 	
 	bool String::IsAlphaNumeric() const {
+		if (IsEmptyOrWhitespace()) {
+			return false;
+		}
+
 		for (size_t i = 0; i < length; i++) {
 			if (!::IsAlphaNumeric(array[i])) {
 				return false;

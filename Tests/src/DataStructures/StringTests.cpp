@@ -342,6 +342,15 @@ namespace String {
 			Assert::IsFalse(string3.IsAlphabetic());
 		}
 
+		TEST_METHOD(EmptyOrWhitespaceStringsFail)
+		{
+			const ds::String emptyString = ds::String::Empty();
+			Assert::IsFalse(emptyString.IsAlphabetic());
+
+			const ds::String whitespace("   \n ");
+			Assert::IsFalse(whitespace.IsAlphabetic());
+		}
+
 	};
 	
 	TEST_CLASS(AlphaNumeric)
@@ -369,6 +378,15 @@ namespace String {
 
 			const ds::String string3("Marks & Spencer");
 			Assert::IsFalse(string3.IsAlphaNumeric());
+		}
+
+		TEST_METHOD(EmptyOrWhitespaceStringsFail)
+		{
+			const ds::String emptyString = ds::String::Empty();
+			Assert::IsFalse(emptyString.IsAlphaNumeric());
+
+			const ds::String whitespace("   \n ");
+			Assert::IsFalse(whitespace.IsAlphaNumeric());
 		}
 
 	};
