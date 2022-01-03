@@ -19,6 +19,20 @@ namespace ds {
 		String Append(const String&) const;
 		String Append(const char*) const;
 
+		/// <summary>
+		/// Converts any English alphabet characters to upper case.
+		/// Modifies the string in-place.
+		/// </summary>
+		void ToUpper();
+		String ToUpper() const;
+
+		/// <summary>
+		/// Converts any English alphabet characters to lower case.
+		/// Modifies the string in-place.
+		/// </summary>
+		void ToLower();
+		String ToLower() const;
+
 		//--- String comparisons
 		bool operator==(const String&) const;
 		bool operator!=(const String&) const;

@@ -152,6 +152,144 @@ namespace String {
 		}
 	};
 
+	TEST_CLASS(ToUpper)
+	{
+	public:
+		TEST_METHOD(ConvertsToUpperCase)
+		{
+			const ds::String original("Greenpath");
+			ds::String string("Greenpath");
+
+			Assert::AreEqual(original, string);
+
+			string.ToUpper();
+			const ds::String target("GREENPATH");
+
+			Assert::AreEqual(target, string);
+			Assert::AreNotEqual(original, string);
+		}
+
+		TEST_METHOD(ConstReturnsNewString)
+		{
+			const ds::String original("Greenpath");
+			const ds::String string("Greenpath");
+			const ds::String target("GREENPATH");
+
+			Assert::AreEqual(original, string);
+
+			const ds::String result = string.ToUpper();
+
+			Assert::AreEqual(original, string);
+			Assert::AreNotEqual(target, string);
+			Assert::AreEqual(target, result);
+		}
+
+		TEST_METHOD(SymbolsAndSpacesPass)
+		{
+			const ds::String original("It's lights out, and away we go!");
+			ds::String string("It's lights out, and away we go!");
+
+			Assert::AreEqual(original, string);
+
+			string.ToUpper();
+			const ds::String target("IT'S LIGHTS OUT, AND AWAY WE GO!");
+
+			Assert::AreEqual(target, string);
+			Assert::AreNotEqual(original, string);
+		}
+
+		TEST_METHOD(EmptyStringsDontChange)
+		{
+			const ds::String original("");
+			ds::String string("");
+
+			Assert::AreEqual(original, string);
+
+			string.ToUpper();
+			Assert::AreEqual(original, string);
+		}
+
+		TEST_METHOD(AllUpperCaseStringsDontChange)
+		{
+			const ds::String original("HAL 9000");
+			ds::String string("HAL 9000");
+
+			Assert::AreEqual(original, string);
+
+			string.ToUpper();
+			Assert::AreEqual(original, string);
+		}
+	};
+
+	TEST_CLASS(ToLower)
+	{
+	public:
+		TEST_METHOD(ConvertsToLowerCase)
+		{
+			const ds::String original("Queen's Gardens");
+			ds::String string("Queen's Gardens");
+
+			Assert::AreEqual(original, string);
+
+			string.ToLower();
+			const ds::String target("queen's gardens");
+
+			Assert::AreEqual(target, string);
+			Assert::AreNotEqual(original, string);
+		}
+
+		TEST_METHOD(ConstReturnsNewString)
+		{
+			const ds::String original("Queen's Gardens");
+			const ds::String string("Queen's Gardens");
+			const ds::String target("queen's gardens");
+
+			Assert::AreEqual(original, string);
+
+			const ds::String result = string.ToLower();
+
+			Assert::AreEqual(original, string);
+			Assert::AreNotEqual(target, string);
+			Assert::AreEqual(target, result);
+		}
+
+		TEST_METHOD(SymbolsAndSpacesPass)
+		{
+			const ds::String original("Higher beings, these words are for you alone.");
+			ds::String string("Higher beings, these words are for you alone.");
+
+			Assert::AreEqual(original, string);
+
+			string.ToLower();
+			const ds::String target("higher beings, these words are for you alone.");
+
+			Assert::AreEqual(target, string);
+			Assert::AreNotEqual(original, string);
+		}
+
+		TEST_METHOD(EmptyStringsDontChange)
+		{
+			const ds::String original("");
+			ds::String string("");
+
+			Assert::AreEqual(original, string);
+
+			string.ToLower();
+			Assert::AreEqual(original, string);
+		}
+
+		TEST_METHOD(AllLowerCaseStringsDontChange)
+		{
+			const ds::String original("the last stag");
+			ds::String string("the last stag");
+
+			Assert::AreEqual(original, string);
+
+			string.ToLower();
+			Assert::AreEqual(original, string);
+		}
+	};
+
 	TEST_CLASS(StringComparison)
 	{
 	public:

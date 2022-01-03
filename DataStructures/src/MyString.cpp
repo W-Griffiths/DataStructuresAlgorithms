@@ -87,6 +87,36 @@ namespace ds {
 		return newString;
 	}
 
+	void String::ToUpper() {
+		const char caseDistanceAscii = 'a' - 'A';
+		for (size_t i = 0; i < length; i++) {
+			if (array[i] >= 'a' && array[i] <= 'z') {
+				array[i] -= caseDistanceAscii;
+			}
+		}
+	}
+
+	String String::ToUpper() const {
+		String newString(*this);
+		newString.ToUpper();
+		return newString;
+	}
+
+	void String::ToLower() {
+		const char caseDistanceAscii = 'a' - 'A';
+		for (size_t i = 0; i < length; i++) {
+			if (array[i] >= 'A' && array[i] <= 'Z') {
+				array[i] += caseDistanceAscii;
+			}
+		}
+	}
+
+	String String::ToLower() const {
+		String newString(*this);
+		newString.ToLower();
+		return newString;
+	}
+
 	bool String::operator==(const String& other) const {
 		if (length != other.length) {
 			return false;
