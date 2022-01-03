@@ -1,6 +1,7 @@
 #include "CppUnitTest.h"
 #include "Random.h"
 #include "Utilities.h"
+#include "MyMath.h"
 #include "Array.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -77,4 +78,18 @@ namespace Utility {
 
 	};
 
+	TEST_CLASS(EvenAndOdd)
+	{
+	public:
+		TEST_METHOD(LargeUIntValuesPass)
+		{
+			unsigned int bigUInt = 4'000'000'000;
+
+			Assert::IsTrue(IsEven(bigUInt));
+			Assert::IsFalse(IsOdd(bigUInt));
+
+			Assert::IsTrue(IsOdd(bigUInt + 1));
+			Assert::IsFalse(IsEven(bigUInt + 1));
+		}
+	};
 }

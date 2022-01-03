@@ -38,3 +38,19 @@ int Max(const int a, const int b) {
 		return a;
 	}
 }
+
+bool IsEven(int num) {
+	return num % 2 == 0;
+}
+
+bool IsOdd(int num) {
+	return num % 2 == 1;
+}
+
+bool IsEven(unsigned int num) {
+	return num % 2 == 0;
+}
+
+bool IsOdd(unsigned int num) {
+	return num % 2 == 1;
+}
