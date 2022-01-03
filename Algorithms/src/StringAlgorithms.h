@@ -1,5 +1,6 @@
 #pragma once
 #include "Array.h"
+#include "MyString.h"
 #include <string>
 
 namespace alg {
@@ -16,5 +17,6 @@ namespace alg {
 		/// spaces to perform the operation correctly.
 		/// </summary>
 		void URLifySpaces(ds::Array<char>&);
+		bool IsPermutationOfPalindrome(const ds::String&);
 	}
 }

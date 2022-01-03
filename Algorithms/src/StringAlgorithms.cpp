@@ -2,8 +2,10 @@
 #include "StackArray.h"
 #include "HashSet.h"
 #include "Array.h"
+#include "Dictionary.h"
 #include "Sort.h"
 #include "CollectionAlgorithms.h"
+#include "MyMath.h"
 #include <sstream>
 
 namespace alg {
@@ -99,6 +101,33 @@ namespace alg {
 				}
 				i--;
 			}
+		}
+
+		bool IsPermutationOfPalindrome(const ds::String& input) {
+			if (!input.IsAlphabetic()) {
+				return false;
+			}
+
+			const ds::String str = input.ToLower();
+			
+			ds::Dictionary<char, unsigned int> letterFrequencies;
+
+			for (char c : str) {
+				letterFrequencies[c]++;
+			}
+
+			// Palindromes have no more than one character that
+			// occurs with an odd frequency
+			unsigned int numCharsWithOddFrequencies = 0;
+			for (auto kv : letterFrequencies) {
+				if (kv.key == ' ') continue;
+
+				if (IsOdd(kv.value)) {
+					numCharsWithOddFrequencies++;
+				}
+			}
+
+			return numCharsWithOddFrequencies <= 1;
 		}
 	}
 }

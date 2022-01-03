@@ -173,4 +173,51 @@ namespace StringAlgorithms {
 			Assert::AreEqual(alg::string::ToString(expectedOutput), alg::string::ToString(input));
 		}
 	};
+
+	TEST_CLASS(PermutationOfPalindrome)
+	{
+	public:
+
+		TEST_METHOD(PalindromesPass)
+		{
+			const ds::String palindrome1("Anna");
+			const ds::String palindrome2("radar");
+			const ds::String palindrome3 = "Taco cat";
+			Assert::IsTrue(alg::string::IsPermutationOfPalindrome(palindrome1));
+			Assert::IsTrue(alg::string::IsPermutationOfPalindrome(palindrome2));
+			Assert::IsTrue(alg::string::IsPermutationOfPalindrome(palindrome3));
+		}
+		TEST_METHOD(PermutationsPass)
+		{
+			const ds::String palindrome1 = "Cat Taco";
+			const ds::String palindrome2 = "Hip Hip Pop";
+			const ds::String palindrome3 = "Apollo A Pollo";
+			Assert::IsTrue(alg::string::IsPermutationOfPalindrome(palindrome1));
+			Assert::IsTrue(alg::string::IsPermutationOfPalindrome(palindrome2));
+			Assert::IsTrue(alg::string::IsPermutationOfPalindrome(palindrome3));
+		}
+		TEST_METHOD(NonPermutationsFail)
+		{
+			const ds::String palindrome1 = "Hippie";
+			const ds::String palindrome2 = "Taco cats";
+			const ds::String palindrome3 = "Hip hop";
+			Assert::IsFalse(alg::string::IsPermutationOfPalindrome(palindrome1));
+			Assert::IsFalse(alg::string::IsPermutationOfPalindrome(palindrome2));
+			Assert::IsFalse(alg::string::IsPermutationOfPalindrome(palindrome3));
+		}
+		TEST_METHOD(NonAlphabeticStringsFail)
+		{
+			const ds::String string1("11:11");
+			const ds::String string2 = "S11S";
+			Assert::IsFalse(alg::string::IsPermutationOfPalindrome(string1));
+			Assert::IsFalse(alg::string::IsPermutationOfPalindrome(string2));
+		}
+		TEST_METHOD(EmptyOrWhitespaceStringsFail)
+		{
+			const ds::String empty = ds::String::Empty();
+			const ds::String whitespace = "   ";
+			Assert::IsFalse(alg::string::IsPermutationOfPalindrome(empty));
+			Assert::IsFalse(alg::string::IsPermutationOfPalindrome(whitespace));
+		}
+	};
 }
