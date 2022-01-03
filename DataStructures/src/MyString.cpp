@@ -117,6 +117,24 @@ namespace ds {
 		return newString;
 	}
 
+	bool String::IsAlphabetic() const {
+		for (size_t i = 0; i < length; i++) {
+			if (!::IsAlphabetic(array[i])) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	bool String::IsAlphaNumeric() const {
+		for (size_t i = 0; i < length; i++) {
+			if (!::IsAlphaNumeric(array[i])) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	bool String::operator==(const String& other) const {
 		if (length != other.length) {
 			return false;

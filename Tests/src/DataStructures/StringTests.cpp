@@ -290,6 +290,61 @@ namespace String {
 		}
 	};
 
+	TEST_CLASS(Alphabetic)
+	{
+	public:
+		TEST_METHOD(LettersAndSpacesAreAlphabetic)
+		{
+			const ds::String string1("Fog Canyon");
+			Assert::IsTrue(string1.IsAlphabetic());
+
+			const ds::String string2("Willoh");
+			Assert::IsTrue(string2.IsAlphabetic());
+		}
+
+		TEST_METHOD(SymbolsAndNumbersAreNotAlphabetic)
+		{
+			const ds::String string1("Kingdom's Edge");
+			Assert::IsFalse(string1.IsAlphabetic());
+
+			const ds::String string2("Valterri, it's James.");
+			Assert::IsFalse(string2.IsAlphabetic());
+
+			const ds::String string3("HAL 9000");
+			Assert::IsFalse(string3.IsAlphabetic());
+		}
+
+	};
+	
+	TEST_CLASS(AlphaNumeric)
+	{
+	public:
+		TEST_METHOD(LettersNumbersAndSpacesAreAlphaNumeric)
+		{
+			const ds::String string1("HAL 9000");
+			Assert::IsTrue(string1.IsAlphaNumeric());
+
+			const ds::String string2("Willoh");
+			Assert::IsTrue(string2.IsAlphaNumeric());
+
+			const ds::String string3("R3d Bu11");
+			Assert::IsTrue(string3.IsAlphaNumeric());
+		}
+
+		TEST_METHOD(SymbolsAreNotAlphaNumeric)
+		{
+			const ds::String string1("Kingdom's Edge");
+			Assert::IsFalse(string1.IsAlphaNumeric());
+
+			const ds::String string2("Valterri, it's James.");
+			Assert::IsFalse(string2.IsAlphaNumeric());
+
+			const ds::String string3("Marks & Spencer");
+			Assert::IsFalse(string3.IsAlphaNumeric());
+		}
+
+	};
+
 	TEST_CLASS(StringComparison)
 	{
 	public:

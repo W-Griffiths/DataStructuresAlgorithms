@@ -34,6 +34,9 @@ namespace ds {
 		void ToLower();
 		String ToLower() const;
 
+		bool IsAlphabetic() const;
+		bool IsAlphaNumeric() const;
+
 		//--- String comparisons
 		bool operator==(const String&) const;
 		bool operator!=(const String&) const;
