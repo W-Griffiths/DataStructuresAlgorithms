@@ -108,6 +108,34 @@ namespace String {
 		}
 	};
 
+	TEST_CLASS(EmptyOrWhitespace)
+	{
+	public:
+		TEST_METHOD(EmptyStringsPass)
+		{
+			const ds::String string = ds::String::Empty();
+
+			Assert::IsTrue(string.IsEmptyOrWhitespace());
+		}
+		TEST_METHOD(WhitespaceStringsPass)
+		{
+			const ds::String string1(" ");
+			Assert::IsTrue(string1.IsEmptyOrWhitespace());
+
+			const ds::String string2("     ");
+			Assert::IsTrue(string2.IsEmptyOrWhitespace());
+
+			const ds::String string3(" \t \t\t \n    ");
+			Assert::IsTrue(string3.IsEmptyOrWhitespace());
+		}
+		TEST_METHOD(StringsWithNonWhitespaceFail)
+		{
+			const ds::String string("  \n  hi   ");
+
+			Assert::IsFalse(string.IsEmptyOrWhitespace());
+		}
+	};
+
 	TEST_CLASS(Append)
 	{
 	public:

@@ -17,6 +17,8 @@ namespace ds {
 		char& operator[](const size_t);
 		char operator[](const size_t) const;
 
+		bool IsEmptyOrWhitespace() const;
+
 		String Append(const String&) const;
 		String Append(const char*) const;
 

@@ -50,6 +50,15 @@ namespace ds {
 		return array[index];
 	}
 
+	bool String::IsEmptyOrWhitespace() const {
+		for (size_t i = 0; i < length; i++) {
+			if (!::IsWhitespace(array[i])) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	String String::Append(const String& other) const {
 		String newString(length + other.length);
 
