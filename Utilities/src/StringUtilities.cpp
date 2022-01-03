@@ -15,3 +15,7 @@ bool IsAlphabetic(const char c) {
 bool IsAlphaNumeric(const char c) {
 	return IsAlphabetic(c) || (c >= '0' && c <= '9');
 }
+
+bool IsWhitespace(const char c) {
+	return c == ' ' || c == '\t' || c == '\r' || c == '\n' || c == '\v' || c == '\f';
+}
