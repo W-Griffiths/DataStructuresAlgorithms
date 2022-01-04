@@ -18,5 +18,6 @@ namespace alg {
 		/// </summary>
 		void URLifySpaces(ds::Array<char>&);
 		bool IsPermutationOfPalindrome(const ds::String&);
+		bool AreOneEditAway(const ds::String&, const ds::String&);
 	}
 }

@@ -220,4 +220,87 @@ namespace StringAlgorithms {
 			Assert::IsFalse(alg::string::IsPermutationOfPalindrome(whitespace));
 		}
 	};
+
+	TEST_CLASS(OneEditAway)
+	{
+	public:
+
+		TEST_METHOD(IdenticalStringsPass)
+		{
+			const ds::String string1("Tiso");
+			const ds::String string2("Tiso");
+			Assert::IsTrue(alg::string::AreOneEditAway(string1, string2));
+
+			const ds::String string3("Simply simply lovely.");
+			const ds::String string4("Simply simply lovely.");
+			Assert::IsTrue(alg::string::AreOneEditAway(string3, string4));
+		}
+		TEST_METHOD(StringsWithOneDeletionPass)
+		{
+			const ds::String string1("Quirrel");
+			const ds::String string2("Quirel");
+			Assert::IsTrue(alg::string::AreOneEditAway(string1, string2));
+
+			const ds::String string3("Alonso");
+			const ds::String string4("Aloso");
+			Assert::IsTrue(alg::string::AreOneEditAway(string3, string4));
+		}
+		TEST_METHOD(StringsWithOneAdditionPass)
+		{
+			const ds::String string1("Grim");
+			const ds::String string2("Grimm");
+			Assert::IsTrue(alg::string::AreOneEditAway(string1, string2));
+
+			const ds::String string3("Full send!");
+			const ds::String string4("Full send!!");
+			Assert::IsTrue(alg::string::AreOneEditAway(string3, string4));
+		}
+		TEST_METHOD(StringsWithOneEditPass)
+		{
+			const ds::String string1("Cornifer");
+			const ds::String string2("Corgifer");
+			Assert::IsTrue(alg::string::AreOneEditAway(string1, string2));
+
+			const ds::String string3("It's Hammer Time.");
+			const ds::String string4("It's Hammer Tyme.");
+			Assert::IsTrue(alg::string::AreOneEditAway(string3, string4));
+		}
+		TEST_METHOD(EmptyStringsPass)
+		{
+			const ds::String string1 = ds::String::Empty();
+			const ds::String string2 = ds::String::Empty();
+			Assert::IsTrue(alg::string::AreOneEditAway(string1, string2));
+		}
+
+		TEST_METHOD(StringsWithMoreThanOneDeletionFail)
+		{
+			const ds::String string1("Quirrel");
+			const ds::String string2("Quirr");
+			Assert::IsFalse(alg::string::AreOneEditAway(string1, string2));
+
+			const ds::String string3("Alonso");
+			const ds::String string4("loso");
+			Assert::IsFalse(alg::string::AreOneEditAway(string3, string4));
+		}
+		TEST_METHOD(StringsWithMoreThanOneAdditionFail)
+		{
+			const ds::String string1("Grim");
+			const ds::String string2("Grimm!");
+			Assert::IsFalse(alg::string::AreOneEditAway(string1, string2));
+
+			const ds::String string3("Full send!");
+			const ds::String string4("Fully send it!");
+			Assert::IsFalse(alg::string::AreOneEditAway(string3, string4));
+		}
+		TEST_METHOD(StringsWithMoreThanOneEditFail)
+		{
+			const ds::String string1("Cornifer");
+			const ds::String string2("Korgifer");
+			Assert::IsFalse(alg::string::AreOneEditAway(string1, string2));
+
+			const ds::String string3("It's Hammer Time.");
+			const ds::String string4("It's Hammer Tyne.");
+			Assert::IsFalse(alg::string::AreOneEditAway(string3, string4));
+		}
+	};
 }

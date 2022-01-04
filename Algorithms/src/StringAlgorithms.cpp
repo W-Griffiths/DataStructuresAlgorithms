@@ -129,5 +129,45 @@ namespace alg {
 
 			return numCharsWithOddFrequencies <= 1;
 		}
+
+		bool AreOneEditAway(const ds::String& a, const ds::String& b) {
+			size_t lengthDifference = Difference(a.Length(), b.Length());
+			if (lengthDifference > 1) return false;
+
+			if (lengthDifference == 0) {
+				bool oneEdit = false;
+				for (size_t i = 0; i < a.Length(); i++) {
+					if (a[i] != b[i]) {
+						// Return early if an edit has already been found
+						if (oneEdit) {
+							return false;
+						}
+						else {
+							oneEdit = true;
+						}
+					}
+				}
+				return true;
+			}
+			else {
+				// lengthDifference is 1
+				bool oneEdit = false;
+				for (size_t ai = 0, bi = 0; ai < a.Length() && bi < b.Length(); ai++, bi++) {
+					if (a[ai] != b[bi]) {
+						// Return early if an edit has already been found
+						if (oneEdit) {
+							return false;
+						}
+						else {
+							oneEdit = true;
+						}
+						// Decrement the smaller string so only the larger
+						// string gets incremented next loop
+						a.Length() < b.Length() ? ai-- : bi--;
+					}
+				}
+				return true;
+			}
+		}
 	}
 }
