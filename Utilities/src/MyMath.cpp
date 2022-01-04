@@ -39,6 +39,10 @@ int Max(const int a, const int b) {
 	}
 }
 
+size_t Difference(const size_t a, const size_t b) {
+	return a > b ? a - b : b - a;
+}
+
 bool IsEven(int num) {
 	return num % 2 == 0;
 }
