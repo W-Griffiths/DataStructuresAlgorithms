@@ -10,6 +10,10 @@ namespace ds {
 		void Append(const char*);
 		void Append(const char);
 
+		void operator+=(const ds::String&);
+		void operator+=(const char*);
+		void operator+=(const char);
+
 		bool IsEmpty() const;
 
 		ds::String ToString() const;

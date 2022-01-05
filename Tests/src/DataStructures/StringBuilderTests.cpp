@@ -124,6 +124,99 @@ namespace StringBuilder {
 		}
 	};
 
+	TEST_CLASS(OperatorPlusEquals)
+	{
+	public:
+		TEST_METHOD(AppendingStrings)
+		{
+			ds::StringBuilder sb;
+			sb += ds::String("April is the cruellest month, breeding\nLilacs out of the dead land,");
+			Assert::IsFalse(sb.IsEmpty());
+
+			const ds::String target1 = "April is the cruellest month, breeding\nLilacs out of the dead land,";
+			Assert::AreEqual(target1, sb.ToString());
+
+			sb += ds::String(" mixing\nMemory and desire, stirring\nDull roots with spring rain.");
+
+			const ds::String target2 = "April is the cruellest month, breeding\nLilacs out of the dead land, mixing\nMemory and desire, stirring\nDull roots with spring rain.";
+			Assert::AreEqual(target2, sb.ToString());
+		}
+		TEST_METHOD(AppendingSmallStrings)
+		{
+			ds::StringBuilder sb;
+			sb += ds::String("Ab");
+			sb += ds::String("so");
+			sb += ds::String("lute ");
+			sb += ds::String("Ra");
+			sb += ds::String("di");
+			sb += ds::String("ance");
+
+			const ds::String target1 = "Absolute Radiance";
+			Assert::AreEqual(target1, sb.ToString());
+		}
+		TEST_METHOD(AppendingCStrings)
+		{
+			ds::StringBuilder sb;
+			sb += "April is the cruellest month, breeding\nLilacs out of the dead land,";
+			Assert::IsFalse(sb.IsEmpty());
+
+			const ds::String target1 = "April is the cruellest month, breeding\nLilacs out of the dead land,";
+			Assert::AreEqual(target1, sb.ToString());
+
+			sb += " mixing\nMemory and desire, stirring\nDull roots with spring rain.";
+
+			const ds::String target2 = "April is the cruellest month, breeding\nLilacs out of the dead land, mixing\nMemory and desire, stirring\nDull roots with spring rain.";
+			Assert::AreEqual(target2, sb.ToString());
+		}
+		TEST_METHOD(AppendingSingleChar)
+		{
+			ds::StringBuilder sb;
+
+			const ds::String string1 = "April is the cruellest month, breeding\nLilacs out of the dead land,";
+			for (char c : string1) {
+				sb += c;
+			}
+
+			const ds::String target1 = "April is the cruellest month, breeding\nLilacs out of the dead land,";
+			Assert::AreEqual(target1, sb.ToString());
+
+			const ds::String string2 = " mixing\nMemory and desire, stirring\nDull roots with spring rain.";
+			for (char c : string2) {
+				sb += c;
+			}
+
+			const ds::String target2 = "April is the cruellest month, breeding\nLilacs out of the dead land, mixing\nMemory and desire, stirring\nDull roots with spring rain.";
+			Assert::AreEqual(target2, sb.ToString());
+		}
+
+		TEST_METHOD(AppendingEmptyString)
+		{
+			ds::StringBuilder sb;
+			sb += ds::String("April is the cruellest month, breeding\nLilacs out of the dead land,");
+			Assert::IsFalse(sb.IsEmpty());
+
+			const ds::String target1 = "April is the cruellest month, breeding\nLilacs out of the dead land,";
+			Assert::AreEqual(target1, sb.ToString());
+
+			sb += ds::String("");
+
+			Assert::AreEqual(target1, sb.ToString());
+		}
+		TEST_METHOD(AppendingEmptyCString)
+		{
+			ds::StringBuilder sb;
+			sb += "April is the cruellest month, breeding\nLilacs out of the dead land,";
+			Assert::IsFalse(sb.IsEmpty());
+
+			const ds::String target1 = "April is the cruellest month, breeding\nLilacs out of the dead land,";
+			Assert::AreEqual(target1, sb.ToString());
+
+			sb += "";
+
+			Assert::AreEqual(target1, sb.ToString());
+		}
+	};
+
 	TEST_CLASS(ToString)
 	{
 	public:

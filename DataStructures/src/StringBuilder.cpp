@@ -16,6 +16,18 @@ namespace ds {
 		AppendCharArray(&c, 1);
 	}
 
+	void StringBuilder::operator+=(const ds::String& string) {
+		Append(string);
+	}
+
+	void StringBuilder::operator+=(const char* cString) {
+		Append(cString);
+	}
+
+	void StringBuilder::operator+=(const char c) {
+		Append(c);
+	}
+
 	bool StringBuilder::IsEmpty() const {
 		return size == 0;
 	}
