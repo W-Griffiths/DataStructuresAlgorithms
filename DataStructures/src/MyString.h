@@ -5,6 +5,8 @@
 
 namespace ds {
 	class String final {
+		friend class StringBuilder;
+
 	public:
 		String(const char*);
 		String(const Array<char>&);

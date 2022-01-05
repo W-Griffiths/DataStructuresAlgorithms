@@ -69,6 +69,9 @@
     <ClCompile Include="src\Algorithms\CollectionAlgorithmTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\DataStructures\StringBuilderTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\DataStructures\Tracer.h">

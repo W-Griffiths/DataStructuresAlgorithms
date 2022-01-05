@@ -179,6 +179,7 @@
     <ClCompile Include="src\Algorithms\CollectionAlgorithmTests.cpp" />
     <ClCompile Include="src\Algorithms\SortTests.cpp" />
     <ClCompile Include="src\Algorithms\StringAlgorithmTests.cpp" />
+    <ClCompile Include="src\DataStructures\StringBuilderTests.cpp" />
     <ClCompile Include="src\Utilities\UtilityTests.cpp" />
     <ClCompile Include="src\DataStructures\ArrayTests.cpp" />
     <ClCompile Include="src\DataStructures\DigraphTests.cpp" />
