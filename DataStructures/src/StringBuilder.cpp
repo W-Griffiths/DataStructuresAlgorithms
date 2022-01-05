@@ -32,6 +32,7 @@ namespace ds {
 		if (newSize > capacity) {
 			GrowCapacity(newSize);
 		}
+		size = newSize;
 		
 		size_t ai = size - len;
 		for (size_t i = 0; i < len; i++) {
@@ -52,7 +53,6 @@ namespace ds {
 		}
 
 		array = std::move(newArray);
-		size = newSize;
 	}
 
 }

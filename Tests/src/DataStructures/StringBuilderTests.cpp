@@ -48,6 +48,19 @@ namespace StringBuilder {
 			const ds::String target2 = "April is the cruellest month, breeding\nLilacs out of the dead land, mixing\nMemory and desire, stirring\nDull roots with spring rain.";
 			Assert::AreEqual(target2, sb.ToString());
 		}
+		TEST_METHOD(AppendingSmallStrings)
+		{
+			ds::StringBuilder sb;
+			sb.Append(ds::String("Ab"));
+			sb.Append(ds::String("so"));
+			sb.Append(ds::String("lute "));
+			sb.Append(ds::String("Ra"));
+			sb.Append(ds::String("di"));
+			sb.Append(ds::String("ance"));
+
+			const ds::String target1 = "Absolute Radiance";
+			Assert::AreEqual(target1, sb.ToString());
+		}
 		TEST_METHOD(AppendingCStrings)
 		{
 			ds::StringBuilder sb;
