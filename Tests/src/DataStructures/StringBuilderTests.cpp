@@ -75,6 +75,26 @@ namespace StringBuilder {
 			const ds::String target2 = "April is the cruellest month, breeding\nLilacs out of the dead land, mixing\nMemory and desire, stirring\nDull roots with spring rain.";
 			Assert::AreEqual(target2, sb.ToString());
 		}
+		TEST_METHOD(AppendingSingleChar)
+		{
+			ds::StringBuilder sb;
+
+			const ds::String string1 = "April is the cruellest month, breeding\nLilacs out of the dead land,";
+			for (char c : string1) {
+				sb.Append(c);
+			}
+
+			const ds::String target1 = "April is the cruellest month, breeding\nLilacs out of the dead land,";
+			Assert::AreEqual(target1, sb.ToString());
+
+			const ds::String string2 = " mixing\nMemory and desire, stirring\nDull roots with spring rain.";
+			for (char c : string2) {
+				sb.Append(c);
+			}
+
+			const ds::String target2 = "April is the cruellest month, breeding\nLilacs out of the dead land, mixing\nMemory and desire, stirring\nDull roots with spring rain.";
+			Assert::AreEqual(target2, sb.ToString());
+		}
 
 		TEST_METHOD(AppendingEmptyString)
 		{

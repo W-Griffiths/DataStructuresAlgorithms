@@ -12,6 +12,10 @@ namespace ds {
 		AppendCharArray(cString, len);
 	}
 
+	void StringBuilder::Append(const char c) {
+		AppendCharArray(&c, 1);
+	}
+
 	bool StringBuilder::IsEmpty() const {
 		return size == 0;
 	}

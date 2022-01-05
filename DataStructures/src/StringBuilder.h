@@ -8,6 +8,7 @@ namespace ds {
 	public:
 		void Append(const ds::String&);
 		void Append(const char*);
+		void Append(const char);
 
 		bool IsEmpty() const;
 
