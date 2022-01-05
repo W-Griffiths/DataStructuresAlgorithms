@@ -6,6 +6,8 @@
 namespace alg {
 	namespace string {
 		std::string ToString(const ds::Array<char>);
+		ds::String IntToString(unsigned int);
+		ds::String IntToString(int);
 
 		bool IsUniqueASCII(const std::string&);
 		bool IsUnique(const std::string&);

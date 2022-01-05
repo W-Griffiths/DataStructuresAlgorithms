@@ -3,6 +3,17 @@
 #include "Array.h"
 #include <string>
 
+namespace Microsoft::VisualStudio::CppUnitTestFramework {
+	template<>
+	static std::wstring ToString<ds::String>(const ds::String& string) {
+		std::wstringstream ss;
+		for (size_t i = 0; i < string.Length(); i++) {
+			ss << string[i];
+		}
+		return ss.str();
+	}
+}
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace StringAlgorithms {
@@ -303,4 +314,34 @@ namespace StringAlgorithms {
 			Assert::IsFalse(alg::string::AreOneEditAway(string3, string4));
 		}
 	};
+
+	TEST_CLASS(IntToString)
+	{
+	public:
+		TEST_METHOD(IntsConvertToStrings)
+		{
+			const unsigned int number = 451;
+			const ds::String string = alg::string::IntToString(number);
+			const ds::String expected("451");
+
+			Assert::AreEqual(expected, string);
+		}
+		TEST_METHOD(ZeroConverts)
+		{
+			const unsigned int number = 0;
+			const ds::String string = alg::string::IntToString(number);
+			const ds::String expected("0");
+
+			Assert::AreEqual(expected, string);
+		}
+		TEST_METHOD(NegativeNumbersConvert)
+		{
+			const int number = -91467250;
+			const ds::String string = alg::string::IntToString(number);
+			const ds::String expected("-91467250");
+
+			Assert::AreEqual(expected, string);
+		}
+	};
+
 }

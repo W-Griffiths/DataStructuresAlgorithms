@@ -7,6 +7,8 @@
 #include "CollectionAlgorithms.h"
 #include "MyMath.h"
 #include <sstream>
+#include "StringBuilder.h"
+#include "Stack.h"
 
 namespace alg {
 	namespace string {
@@ -16,6 +18,33 @@ namespace alg {
 				ss << input[i];
 			}
 			return ss.str();
+		}
+
+		ds::String IntToString(unsigned int num) {
+			ds::StringBuilder sb;
+			ds::Stack<char> stack;
+
+			do {
+				stack.Push( '0' + (num % 10) );
+				num /= 10;
+			} while (num > 0);
+
+			while (!stack.IsEmpty()) {
+				sb += stack.Pop();
+			}
+
+			return sb.ToString();
+		}
+
+		ds::String IntToString(int num) {
+			ds::StringBuilder sb;
+
+			if (num < 0) {
+				sb += '-';
+			 }
+			sb += IntToString(unsigned int( -num ));
+
+			return sb.ToString();
 		}
 
 		bool IsUniqueASCII(const std::string& input) {
