@@ -198,5 +198,44 @@ namespace alg {
 				return true;
 			}
 		}
+
+		ds::String CompressString(const ds::String& input) {
+			if (!input.IsAlphabetic()) {
+				return input;
+			}
+
+			ds::StringBuilder compressed;
+
+			const unsigned int minCompressLength = 3;
+
+			size_t i = 0;
+			while (i < input.Length()) {
+
+				const char searchChar = input[i];
+				size_t repeats = 1;
+				size_t lookIndex = i + 1;
+				while (lookIndex < input.Length()) {
+					if (input[lookIndex] == searchChar) {
+						repeats++;
+						lookIndex++;
+					}
+					else break;
+				}
+				i = lookIndex;
+
+				if (repeats >= minCompressLength) {
+					compressed += IntToString(repeats);
+					compressed += searchChar;
+				}
+				else {
+					for (size_t i = 0; i < repeats; i++) {
+						compressed += searchChar;
+					}
+				}
+
+			}
+
+			return compressed.ToString();
+		}
 	}
 }

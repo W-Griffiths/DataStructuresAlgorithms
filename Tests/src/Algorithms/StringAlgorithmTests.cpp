@@ -315,6 +315,67 @@ namespace StringAlgorithms {
 		}
 	};
 
+	TEST_CLASS(CompressString)
+	{
+	public:
+
+		TEST_METHOD(RepeatedStringCompresses)
+		{
+			const ds::String string("aaaaaaaaaa");
+			const ds::String compressed = alg::string::CompressString(string);
+			const ds::String expected("10a");
+
+			Assert::AreEqual(expected, compressed);
+		}
+		TEST_METHOD(OnlyRepeatCharactersCompress)
+		{
+			const ds::String string("CAAAAABBA");
+			const ds::String compressed = alg::string::CompressString(string);
+			const ds::String expected("C5ABBA");
+
+			Assert::AreEqual(expected, compressed);
+		}
+		TEST_METHOD(LongRepeatingStringsCompress)
+		{
+			const ds::String string("ddddrrriippppppp    dddrrrrrrroooooooppppppppp");
+			const ds::String compressed = alg::string::CompressString(string);
+			const ds::String expected("4d3rii7p4 3d7r7o9p");
+
+			Assert::AreEqual(expected, compressed);
+		}
+		TEST_METHOD(CaseSensitive)
+		{
+			const ds::String string("AaAaAaaAAaAaaaaAAAAaaa");
+			const ds::String compressed = alg::string::CompressString(string);
+			const ds::String expected("AaAaAaaAAaA4a4A3a");
+
+			Assert::AreEqual(expected, compressed);
+		}
+		TEST_METHOD(NonCompressableStringsAreUnchanged)
+		{
+			const ds::String string("Millibelle opened a bank in a recluse and safe area in Fog Canyon");
+			const ds::String compressed = alg::string::CompressString(string);
+			const ds::String expected("Millibelle opened a bank in a recluse and safe area in Fog Canyon");
+
+			Assert::AreEqual(expected, compressed);
+		}
+		TEST_METHOD(StringsWithSymbolsDontCompress)
+		{
+			const ds::String string("AAAAA.BBBBB.CCCCC");
+			const ds::String compressed = alg::string::CompressString(string);
+			const ds::String expected("AAAAA.BBBBB.CCCCC");
+
+			Assert::AreEqual(expected, compressed);
+		}
+		TEST_METHOD(EmptyStringDoesNothing)
+		{
+			const ds::String emptyString("");
+			const ds::String compressed = alg::string::CompressString(emptyString);
+			Assert::IsTrue(compressed.IsEmpty());
+			Assert::AreEqual(emptyString, compressed);
+		}
+	};
+
 	TEST_CLASS(IntToString)
 	{
 	public:

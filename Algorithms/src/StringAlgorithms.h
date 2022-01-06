@@ -21,5 +21,12 @@ namespace alg {
 		void URLifySpaces(ds::Array<char>&);
 		bool IsPermutationOfPalindrome(const ds::String&);
 		bool AreOneEditAway(const ds::String&, const ds::String&);
+		/// <summary>
+		/// Compresses string using the format:
+		/// aabbbbccc -> aa4b3c
+		/// This basic method only works with alphabetic characters and spaces.
+		/// Non-alphabetic strings are returned uncompressed.
+		/// </summary>
+		ds::String CompressString(const ds::String&);
 	}
 }
